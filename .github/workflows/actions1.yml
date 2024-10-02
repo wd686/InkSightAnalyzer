@@ -1,4 +1,4 @@
-name: test run for 6 models (1)
+name: test run for 6 models (SA)
 
 on:
   # schedule:
