@@ -140,6 +140,8 @@ sa_combined_df[['nli1_label', 'nli2_label', 'nli3_label']] = sa_combined_df['Com
 
 ############################################################
 
+sa_combined_df.to_csv('nli_combined_df.csv')
+
 ### Multi-turn Zero-shot ABSA ###
 
 # # 50 rows -> ~1min
