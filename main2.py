@@ -8,9 +8,10 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # hard-codings
 
-# Define file paths
-filepath = r"combined_df.csv"
-interestAfterThisDate = '2024-04-01'
+monthsOfInterest_list = ["2024-04-01"] # "2023-12-01", "2024-01-01", "2024-04-01"
+model = "facebook/bart-large-mnli" # "facebook/bart-large-mnli", "cross-encoder/nli-roberta-base", "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+input_filepath = "combined_df.csv"
+output_filepath = f"nli_combined_df_{model.replace('/', '-')} ({', '.join(monthsOfInterest_list)}).csv"
 maxTokenCount = 200
 sample = 10
 
@@ -34,35 +35,32 @@ sample = 10
 #         return pd.Series(['Unknown', 'Unknown', 'Unknown'])
     
 # Define a function to extract NLI labels for all three models
-def get_nli_labels(text):
+def get_nli_label(text):
     if isinstance(text, str):  # Check if the input is a valid string
         # Perform zero-shot classification with candidate labels for each model
         # Specify candidate labels for nli
         candidate_labels = ["positive comment", "negative comment", "neutral comment"]
-        result_nli1 = nli1(text, candidate_labels=candidate_labels)
-        result_nli2 = nli2(text, candidate_labels=candidate_labels)
-        result_nli3 = nli3(text, candidate_labels=candidate_labels)
-        
+        result_nli = nli(text, candidate_labels=candidate_labels)
+
         # Extract the label with the highest probability from each result
-        label_nli1 = result_nli1['labels'][0]  # First label is the highest probability
-        label_nli2 = result_nli2['labels'][0]
-        label_nli3 = result_nli3['labels'][0]
+        label_nli = result_nli['labels'][0]  # First label is the highest probability
         
-        return pd.Series([label_nli1, label_nli2, label_nli3])
+        return pd.Series([label_nli])
     else:
         # Return 'Unknown' for non-string inputs
-        return pd.Series(['Unknown', 'Unknown', 'Unknown'])
+        return pd.Series(['Unknown'])
     
 ############################################################
 
 ### WRANGLING ###
 
 # Read the csv files into DataFrames
-combined_df = pd.read_csv(filepath) 
+combined_df = pd.read_csv(input_filepath) 
 
 # Filter recent reviews
-combined_df['Month of Response Date'] = pd.to_datetime(combined_df['Month of Response Date'])
-combined_df = combined_df[combined_df['Month of Response Date'] >= interestAfterThisDate].reset_index(drop=True)
+# combined_df['Month of Response Date'] = pd.to_datetime(combined_df['Month of Response Date'])
+pattern = '|'.join(monthsOfInterest_list)
+combined_df = combined_df[combined_df['Month of Response Date'].str.contains(pattern, na=False)].reset_index(drop=True)
 
 # # combined_df.head(3)
 # len(combined_df)
@@ -108,15 +106,13 @@ combined_df = combined_df[combined_df['Month of Response Date'] >= interestAfter
 # nli2: MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli -> # https://huggingface.co/MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli?library=transformers
 # nli3: cross-encoder/nli-roberta-base -> # https://huggingface.co/cross-encoder/nli-roberta-base?library=transformers
 
-nli1 = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
-nli2 = pipeline("zero-shot-classification", model="MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli")
-nli3 = pipeline("zero-shot-classification", model="cross-encoder/nli-roberta-base")
+nli = pipeline("zero-shot-classification", model = model)
 
 # Specify candidate labels for nli
-candidate_labels = ["positive comment", "negative comment", "neutral comment"]
+# candidate_labels = ["positive comment", "negative comment", "neutral comment"]
                                                      
 # text = "This movie was absolutely amazing!"
-text = combined_df['Combined Text'][1]
+# text = combined_df['Combined Text'][1]
 
 # print(f"Text: {text}\n\n"
 #       f"sa1: {sa1(text, truncation=True, max_length=512)}\n"
@@ -136,11 +132,11 @@ sa_combined_df = combined_df[combined_df['token_count'] <= maxTokenCount].copy()
 
 # Apply the function to each row in the 'Combined Text' column and create new columns
 # sa_combined_df[['sa1_label', 'sa2_label', 'sa3_label']] = sa_combined_df['Combined Text'].apply(get_sentiment_labels)
-sa_combined_df[['nli1_label', 'nli2_label', 'nli3_label']] = sa_combined_df['Combined Text'].apply(get_nli_labels)
+sa_combined_df[['nli_label']] = sa_combined_df['Combined Text'].apply(get_nli_label)
 
 ############################################################
 
-sa_combined_df.to_csv('nli_combined_df.csv')
+sa_combined_df.to_csv(output_filepath)
 
 ### Multi-turn Zero-shot ABSA ###
 

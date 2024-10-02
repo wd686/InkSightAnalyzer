@@ -8,9 +8,9 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # hard-codings
 
-# Define file paths
-filepath = r"combined_df.csv"
-interestAfterThisDate = '2024-04-01'
+monthsOfInterest_list = ['2023-12-01', '2024-01-01', '2024-04-01']
+input_filepath = "combined_df.csv"
+output_filepath = f"sa_combined_df_all3models ({', '.join(monthsOfInterest_list)}).csv"
 maxTokenCount = 200
 sample = 10
 
@@ -58,11 +58,12 @@ def get_sentiment_labels(text):
 ### WRANGLING ###
 
 # Read the csv files into DataFrames
-combined_df = pd.read_csv(filepath) 
+combined_df = pd.read_csv(input_filepath) 
 
 # Filter recent reviews
-combined_df['Month of Response Date'] = pd.to_datetime(combined_df['Month of Response Date'])
-combined_df = combined_df[combined_df['Month of Response Date'] >= interestAfterThisDate].reset_index(drop=True)
+# combined_df['Month of Response Date'] = pd.to_datetime(combined_df['Month of Response Date'])
+pattern = '|'.join(monthsOfInterest_list)
+combined_df = combined_df[combined_df['Month of Response Date'].str.contains(pattern, na=False)].reset_index(drop=True)
 
 # # combined_df.head(3)
 # len(combined_df)
@@ -113,10 +114,10 @@ sa3 = pipeline("text-classification", model="avichr/heBERT_sentiment_analysis", 
 # nli3 = pipeline("zero-shot-classification", model="cross-encoder/nli-roberta-base")
 
 # Specify candidate labels for nli
-candidate_labels = ["positive comment", "negative comment", "neutral comment"]
+# candidate_labels = ["positive comment", "negative comment", "neutral comment"]
                                                      
 # text = "This movie was absolutely amazing!"
-text = combined_df['Combined Text'][1]
+# text = combined_df['Combined Text'][1]
 
 # print(f"Text: {text}\n\n"
 #       f"sa1: {sa1(text, truncation=True, max_length=512)}\n"
@@ -140,7 +141,7 @@ sa_combined_df[['sa1_label', 'sa2_label', 'sa3_label']] = sa_combined_df['Combin
 
 ############################################################
 
-sa_combined_df.to_csv('sa_combined_df.csv')
+sa_combined_df.to_csv(output_filepath)
 
 ### Multi-turn Zero-shot ABSA ###
 
