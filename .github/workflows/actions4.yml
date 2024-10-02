@@ -1,4 +1,4 @@
-name: test run for 6 models (1)
+name: test run for 6 models (4)
 
 on:
   # schedule:
@@ -33,7 +33,7 @@ jobs:
       - name: execute py script
         # env:
         #   GOOGLEAPI: ${{secrets.GOOGLEAPI}}
-        run: python main1.py
+        run: python main4.py
 
       - name: pull changes
         run: |
@@ -49,5 +49,7 @@ jobs:
           git diff-index --quiet HEAD || (git commit -a -m "updated files" --allow-empty)
 
       - name: push changes
-        run: |
-            git push origin main
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
