@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # hard-codings
 
-monthsOfInterest_list = ['2024-04-01'] # ['2023-12-01', '2024-01-01', '2024-04-01']
+monthsOfInterest_list = ['2023-12-01', '2024-01-01', '2024-04-01']
 input_filepath = "combined_df.csv"
 output_filepath = f"sa_combined_df_all3models ({', '.join(monthsOfInterest_list)}).csv"
 maxTokenCount = 200
@@ -135,18 +135,11 @@ sa3 = pipeline("text-classification", model="avichr/heBERT_sentiment_analysis", 
 
 sa_combined_df = combined_df[combined_df['token_count'] <= maxTokenCount].copy()
 
-sa_combined_df = sa_combined_df.head(5) # TODO
-
 # Apply the function to each row in the 'Combined Text' column and create new columns
 sa_combined_df[['sa1_label', 'sa2_label', 'sa3_label']] = sa_combined_df['Combined Text'].apply(get_sentiment_labels)
 # sa_combined_df[['nli1_label', 'nli2_label', 'nli3_label']] = sa_combined_df['Combined Text'].apply(get_nli_labels)
 
 ############################################################
-
-print(sa_combined_df) # TODO
-print(sa_combined_df.shape) # TODO
-print(sa_combined_df.info()) # TODO
-print(output_filepath) # TODO
 
 sa_combined_df.to_csv(output_filepath)
 
