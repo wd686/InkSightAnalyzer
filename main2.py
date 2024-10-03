@@ -9,7 +9,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 # hard-codings
 
 monthsOfInterest_list = ["2024-04-01"] # "2023-12-01", "2024-01-01", "2024-04-01"
-model = "facebook/bart-large-mnli" # "facebook/bart-large-mnli", "cross-encoder/nli-roberta-base", "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+model = "cross-encoder/nli-roberta-base" # "facebook/bart-large-mnli", "cross-encoder/nli-roberta-base", "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
 input_filepath = "combined_df.csv"
 output_filepath = f"nli_combined_df_{model.replace('/', '-')} ({', '.join(monthsOfInterest_list)}).csv"
 maxTokenCount = 200
