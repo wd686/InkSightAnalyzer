@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # hard-codings
 
-monthsOfInterest_list = ['2024-01-01'] # ['2023-12-01', '2024-01-01', '2024-04-01']
+monthsOfInterest_list = ['2024-04-01'] # ['2023-12-01', '2024-01-01', '2024-04-01']
 input_filepath = "combined_df.csv"
 output_filepath = f"sa_combined_df_all3models ({', '.join(monthsOfInterest_list)}).csv"
 maxTokenCount = 200
