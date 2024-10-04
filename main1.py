@@ -10,7 +10,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 monthsOfInterest_list = ['2023-12-01', '2024-01-01', '2024-04-01']
 input_filepath = "combined_df.csv"
-output_filepath = f"sa_combined_df_all3models ({', '.join(monthsOfInterest_list)}).csv"
+output_filepath = f"./modelResults/sa_combined_df_all3models ({', '.join(monthsOfInterest_list)}).csv"
 maxTokenCount = 200
 sample = 10
 

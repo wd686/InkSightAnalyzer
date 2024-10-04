@@ -130,8 +130,6 @@ nli = pipeline("zero-shot-classification", model = model)
 
 sa_combined_df = combined_df[combined_df['token_count'] <= maxTokenCount].copy()
 
-sa_combined_df = sa_combined_df.head() # TODO
-
 # Apply the function to each row in the 'Combined Text' column and create new columns
 # sa_combined_df[['sa1_label', 'sa2_label', 'sa3_label']] = sa_combined_df['Combined Text'].apply(get_sentiment_labels)
 sa_combined_df[['nli_label']] = sa_combined_df['Combined Text'].apply(get_nli_label)
