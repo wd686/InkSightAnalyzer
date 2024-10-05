@@ -1,4 +1,4 @@
-name: test run for 6 models (SA)
+name: SA
 
 on:
   # schedule:
@@ -26,7 +26,7 @@ jobs:
       - name: execute py script
         # env:
         #   GOOGLEAPI: ${{secrets.GOOGLEAPI}}
-        run: python main1.py
+        run: python main_SA.py
 
       - name: pull changes
         run: |
