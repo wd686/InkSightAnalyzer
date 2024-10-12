@@ -1,4 +1,4 @@
-name: SA
+name: Aspect-Based Sentiment Analysis
 
 on:
   # schedule:
