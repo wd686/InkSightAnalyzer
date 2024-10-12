@@ -1,6 +1,4 @@
 import streamlit as st
-from PIL import Image
-from main import section, division, group, Class, subclass
 
 # hard-coding
 acraLogoPath = 'images/group_logo.jpg'
