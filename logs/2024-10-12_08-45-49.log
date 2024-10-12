@@ -1,0 +1,5 @@
+2024-10-12 08:45:49,195 - INFO - Start code execution ...
+2024-10-12 08:45:49,801 - INFO - Read raw input file
+2024-10-12 08:45:50,722 - INFO - Aspect output file generated
+2024-10-12 08:45:52,127 - INFO - Sentiment output file generated
+2024-10-12 08:45:53,068 - INFO - Final output file generated
