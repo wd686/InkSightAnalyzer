@@ -1,7 +1,7 @@
 import streamlit as st
 
 # hard-coding
-acraLogoPath = 'images/group_logo.jpg'
+logoPath = 'images/group_logo.jpg'
 
 # Set page config
 st.set_page_config(
@@ -34,7 +34,7 @@ st.markdown(custom_styles, unsafe_allow_html=True)
 col1, col2, col3 = st.columns([1, 10, 1])  # Adjust column proportions as needed
 
 with col1:
-    st.image(acraLogoPath, caption='', output_format='JPEG', width=150)  # Set width to shrink the image
+    st.image(logoPath, caption='', output_format='JPEG', width=150)  # Set width to shrink the image
 
 st.write("## About this Webpage")
 
