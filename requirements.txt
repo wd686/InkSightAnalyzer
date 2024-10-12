@@ -9,7 +9,6 @@ google-cloud-storage
 requests
 st-files-connection
 Pillow==10.3.0
-scipy==1.13.1
 pandas==2.2.2
 setuptools==65.5.0
 scikit-learn==1.5.0
@@ -28,3 +27,4 @@ torchaudio==2.2.2
 # nltk==3.8.1
 # transformers==4.33.0
 # torch==2.0.1
+# scipy==1.13.1
