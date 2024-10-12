@@ -40,8 +40,8 @@ st.write("## About this Webpage")
 
 st.markdown(
     '''
-This platform allows users to visualize the various aspects and its respetive sentiments obtained from a set of 'printer & ink' related customer surveys.\ 
-Additionally, users are also able to input adhoc text comments relating to 'printer & ink' and obtain its respective aspects and sentiments. 
+This platform allows users to visualize the various aspects and its respetive sentiments obtained from a set of 'printer & ink' related customer surveys.\
+ Additionally, users are also able to input adhoc text comments relating to 'printer & ink' and obtain its respective aspects and sentiments. 
 '''
 )
 
