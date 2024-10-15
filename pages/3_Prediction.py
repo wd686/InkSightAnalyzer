@@ -182,8 +182,8 @@ st.header('Download your template CSV file here:')
 
 st.download_button("Download template CSV file",
                     template_df.to_csv(),
-                    file_name =  'template_file.csv',
-                    mine = 'text/csv')
+                    file_name = 'template_file.csv',
+                    mime = 'text/csv')
 
 st.header('Upload your modified CSV file here:')
 
