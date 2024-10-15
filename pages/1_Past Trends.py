@@ -339,3 +339,6 @@
 # # Visual Effects ### - https://docs.streamlit.io/develop/api-reference/status
 # # st.balloons() 
 # # st.sidebar.success("Explore our pages above ☝️")
+
+st.header('Visualisation of Training Data')
+st.subheader(f"*Period between December 2023 - March 2024*")

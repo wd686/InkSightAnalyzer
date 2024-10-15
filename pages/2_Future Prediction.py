@@ -166,6 +166,11 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+st.header('Aspect Based Sentiment Analysis (ABSA) System')
+
+st.subheader(f"*Simply download the template CSV file, change the Time Period and Reviews of interest, and upload the modified CSV file.*")
+st.subheader(f"*ABSA models will run in the background and results will be displayed. CSV results can be downloaded.*")
+
 data = {
     "Time period": ["April - May 2024"] + [""] * 8,
     "Reviews": [
@@ -178,14 +183,14 @@ data = {
 # Create the DataFrame
 template_df = pd.DataFrame(data)
 
-st.header('Download your template CSV file here:')
+st.subheader('Download your template CSV file here:')
 
 st.download_button("Download template CSV file",
                     template_df.to_csv(index = False),
                     file_name = 'template_file.csv',
                     mime = 'text/csv')
 
-st.header('Upload your modified CSV file here:')
+st.subheader('Upload your modified CSV file here:')
 
 upload_file = st.file_uploader("Upload CSV File (there should only be 1 cell input for column 'Time period')")
 
