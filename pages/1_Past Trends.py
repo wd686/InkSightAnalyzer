@@ -1,10 +1,10 @@
-# import streamlit as st
-# import ast
-# import numpy as np
-# import pandas as pd
-# import seaborn as sns
-# import matplotlib.pyplot as plt
-# import matplotlib.cm as cm
+import streamlit as st
+import ast
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 # from commonFunctions import ssic_df, capitalize_sentence
 # from main import binSize, level, modelChoice, topN, ssic_detailed_def_filepath, ssic_alpha_index_filepath, companies_filepath
 
@@ -340,5 +340,5 @@
 # # st.balloons() 
 # # st.sidebar.success("Explore our pages above ☝️")
 
-st.header('Visualisation of Training Data')
-st.subheader(f"*Period between December 2023 - March 2024*")
+st.header('Visualization of Training Data')
+st.write(f"*Period between December 2023 - March 2024*")

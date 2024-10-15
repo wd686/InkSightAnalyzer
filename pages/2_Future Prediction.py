@@ -168,8 +168,8 @@ import pandas as pd
 
 st.header('Aspect Based Sentiment Analysis (ABSA) System')
 
-st.subheader(f"*Simply download the template CSV file, change the Time Period and Reviews of interest, and upload the modified CSV file.*")
-st.subheader(f"*ABSA models will run in the background and results will be displayed. CSV results can be downloaded.*")
+st.write(f"*Simply download the template CSV file, change the Time Period and Reviews of interest, and upload the modified CSV file.*")
+st.write(f"*ABSA models will run in the background and results will be displayed. CSV results can be downloaded.*")
 
 data = {
     "Time period": ["April - May 2024"] + [""] * 8,
