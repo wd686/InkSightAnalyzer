@@ -166,6 +166,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+# Hide error details from the user
+st.set_option('client.showErrorDetails', False)
+
 data = {
     "Time period": ["April - May 2024"] + [""] * 8,
     "Reviews": [
