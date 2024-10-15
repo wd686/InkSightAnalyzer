@@ -161,3 +161,34 @@
 #         lvl_title = capitalize_sentence(merged_df2[['Value', lvl_train, lvl_train_title]].reset_index(drop = True)[lvl_train_title][result])
         
 #         st.write(f"**{lvl}**: {lvl_title}")
+
+import streamlit as st
+import numpy as np
+import pandas as pd
+
+data = {
+    "Time period": ["April - May 2024"] + [""] * 8,
+    "Reviews": [
+        "Review sample 1", "Review sample 2", "Review sample 3",
+        "Review sample 4", "Review sample 5", "Review sample 6",
+        "Review sample 7", "Review sample 8", "Review sample 9"
+    ]
+}
+
+# Create the DataFrame
+template_df = pd.DataFrame(data)
+
+st.header('Download your template CSV file here:')
+
+st.download_button("Download template CSV file",
+                    template_df.to_csv(),
+                    file_name =  'template_file.csv',
+                    mine = 'text/csv')
+
+st.header('Upload your modified CSV file here:')
+
+upload_file = st.file_uploader('Upload CSV File')
+df = pd.read_csv(upload_file)
+
+df_modified = df.loc[df.Reviews == 'Review sample 8', 'Reviews'] = 'Test'
+st.dataframe(df_modified, width = 1800, height = 1200)
