@@ -192,7 +192,8 @@ upload_file = st.file_uploader('Upload CSV File')
 try:
     df = pd.read_csv(upload_file)
 
-    df_modified = df.loc[df.Reviews == 'Review sample 8', 'Reviews'] = 'Test'
+    df.loc[df.Reviews == 'Review sample 8', 'Reviews'] = 'Test'
+    df_modified = df
     st.dataframe(df_modified, width = 1800, height = 1200)
 except ValueError:
     pass
