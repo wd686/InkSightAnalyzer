@@ -187,7 +187,7 @@ st.download_button("Download template CSV file",
 
 st.header('Upload your modified CSV file here:')
 
-upload_file = st.file_uploader('Upload CSV File')
+upload_file = st.file_uploader("Upload CSV File (there should only be 1 cell input for column 'Time period')")
 
 try:
     df = pd.read_csv(upload_file)
