@@ -166,9 +166,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-# Hide error details from the user
-st.set_option('client.showErrorDetails', False)
-
 data = {
     "Time period": ["April - May 2024"] + [""] * 8,
     "Reviews": [
@@ -191,7 +188,11 @@ st.download_button("Download template CSV file",
 st.header('Upload your modified CSV file here:')
 
 upload_file = st.file_uploader('Upload CSV File')
-df = pd.read_csv(upload_file)
 
-df_modified = df.loc[df.Reviews == 'Review sample 8', 'Reviews'] = 'Test'
-st.dataframe(df_modified, width = 1800, height = 1200)
+try:
+    df = pd.read_csv(upload_file)
+
+    df_modified = df.loc[df.Reviews == 'Review sample 8', 'Reviews'] = 'Test'
+    st.dataframe(df_modified, width = 1800, height = 1200)
+except ValueError:
+    pass
