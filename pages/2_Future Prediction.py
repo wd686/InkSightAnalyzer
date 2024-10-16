@@ -2,6 +2,9 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import squarify
+import matplotlib
 from controller import controllerService
 
 # Set page config
@@ -54,7 +57,38 @@ try:
     with col1:
         st.write("Placeholder1 (Wordcloud Visualization)") # TODO insert word-cloud
     with col2:
-        st.write("Placeholder2 (Treemap Visualization)") # TODO insert tree map
+        st.write("Placeholder2 (Treemap Visualization)")
+
+        # Tree Map
+        timePeriod_str = rawInput_df.head(1).reset_index()['Time period'][0]
+
+        # Normalize sentiment values and apply colors
+        norm = matplotlib.colors.Normalize(vmin=min(overallResultsOutput_df.Sentiment), vmax=max(overallResultsOutput_df.Sentiment))
+        colors = [matplotlib.cm.Reds(norm(value)) for value in overallResultsOutput_df.Sentiment]
+
+        # Create figure and size
+        fig, ax = plt.subplots()
+        fig.set_size_inches(12, 8)
+
+        # Create squarify plot
+        squarify.plot(
+            label=overallResultsOutput_df.Category,
+            sizes=overallResultsOutput_df.Total,
+            value=overallResultsOutput_df.Sentiment,
+            color=colors,
+            alpha=.5,
+            pad=True
+        )
+
+        # Add titles
+        plt.suptitle("Sentiment Heat Map of Printer & Ink Aspects", fontsize=20, fontweight="bold")  # Main title
+        plt.title(f"{timePeriod_str}", fontsize=14, fontstyle='italic', pad=10)  # Subtitle
+
+        # Remove axes
+        plt.axis('off')
+
+        # Display the plot in Streamlit
+        st.pyplot(fig)
 
     st.download_button("Download Aspect-Sentiment Output CSV file",
                     aspectSentimentOutput_df.to_csv(index = False),
