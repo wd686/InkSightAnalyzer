@@ -40,7 +40,7 @@ def sentimentExtraction(self, aspectInput_df):
         'Neg': [4, 0, 4, 7, 5],
         'Total': [31, 3, 46, 60, 27],
         'Category': ['Quality', 'Cost', 'Shipment', 'Services', 'Instant Ink'],
-        'Sentiment': [0.74, 1.00, 0.83, 0.77, 0.63]
+        'Sentiment': [0.05, 1.00, 0.83, 0.77, 0.00]
     }
 
     overallResultsOutput_df = pd.DataFrame(data)
