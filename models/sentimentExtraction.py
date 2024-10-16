@@ -36,11 +36,11 @@ def sentimentExtraction(self, aspectInput_df):
     # TODO transfrom aspectSentimentOutput_df to overallResultsOutput_df and replace hard-coding below
 
     data = {
-        'Pos': [27, 3, 42, 53, 22],
-        'Neg': [4, 0, 4, 7, 5],
-        'Total': [31, 3, 46, 60, 27],
+        'Pos': [4, 33, 42, 0, 22],
+        'Neg': [54, 0, 3, 47, 22],
+        'Total': [58, 33, 45, 47, 44],
         'Category': ['Quality', 'Cost', 'Shipment', 'Services', 'Instant Ink'],
-        'Sentiment': [0.05, 1.00, 0.83, 0.77, 0.00]
+        'Sentiment': [-0.86, 1.00, 0.87, -1.00, 0.00]
     }
 
     overallResultsOutput_df = pd.DataFrame(data)
