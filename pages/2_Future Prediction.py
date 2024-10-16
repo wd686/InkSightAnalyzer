@@ -40,10 +40,10 @@ st.subheader('Upload your modified CSV file here:')
 uploaded_file = st.file_uploader("Upload CSV File (there should only be 1 cell input for column 'Time period')")
 
 try:
-    rawInput_filepath = pd.read_csv(uploaded_file)
+    rawInput_df = pd.read_csv(uploaded_file)
 
     modelResults = controllerService()
-    aspect_df = modelResults.runAspectClassification(rawInput_filepath)
+    aspect_df = modelResults.runAspectClassification(rawInput_df)
     aspectSentimentOutput_df, overallResultsOutput_df = modelResults.runSentimentExtraction(aspect_df)
 
     col1, col2 = st.columns([1,1])
