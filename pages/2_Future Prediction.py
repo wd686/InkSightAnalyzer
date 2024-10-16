@@ -61,7 +61,7 @@ try:
                     mime = 'text/csv')
     
     st.download_button("Download Overall Results Output CSV file",
-                    template_df.to_csv(index = False),
+                    overallResultsOutput_df.to_csv(index = False),
                     file_name = 'overallResultsOutput_file.csv',
                     mime = 'text/csv')
 
