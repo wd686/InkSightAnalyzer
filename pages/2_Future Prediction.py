@@ -13,7 +13,7 @@ st.set_page_config(
 
 st.header('Aspect Based Sentiment Analysis (ABSA) System')
 
-st.write(f"*Simply download the template CSV file, change the Time Period and Reviews of interest, and upload the modified CSV file.*")
+st.write(f"*Simply download the Template CSV file, change the Time Period and Reviews of interest, and upload the modified CSV file.*")
 st.write(f"*ABSA models will then run in the background (the models run time can be anywhere between few seconds to hours, depending on the size of the modified CSV file).*")
 st.write(f"*The results will be displayed after the models have finished running. The output CSV results can also be downloaded.*")
 
@@ -29,9 +29,9 @@ data = {
 # Create the DataFrame
 template_df = pd.DataFrame(data)
 
-st.subheader('Download your template CSV file here:')
+st.subheader('Download your Template CSV file here:')
 
-st.download_button("Download template CSV file",
+st.download_button("Download Template CSV file",
                     template_df.to_csv(index = False),
                     file_name = 'template_file.csv',
                     mime = 'text/csv')
