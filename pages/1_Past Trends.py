@@ -4,7 +4,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # hard-coded variables
-df = pd.read_excel('dataSource/Combined Survey+Web review.xlsx')
+# df = pd.read_excel('dataSource/Combined Survey+Web review.xlsx')
+startEndPeriods_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/startEndPeriods.csv')
+reviewSource_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/reviewSource.csv')
+inkSupply_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/inkSupply.csv')
+printer_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/printer.csv')
+supplies_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/supplies.csv')
+ageGender_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/ageGender.csv')
+sentimentTime_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/sentimentTime.csv')
 
 # Set page config
 st.set_page_config(
@@ -13,38 +20,46 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-st.header('Visualization of Training Data')
-st.write(f"*Period between December 2023 - March 2024*")
-
-df2 = df[['LTR', 'Star Rating', 'Review Source', 'Supplies Family', 'Printer Family', 'Combined Text', 'Ink Supply Type', 'Month of Response Date', 'Age Range', 'Gender']].drop_duplicates(subset = 'Combined Text')
-df2['Month of Response Date'] = pd.to_datetime(df2['Month of Response Date'])
-df2 = df2[df2['Month of Response Date'] < '2024-04-01']
-
 # reviewSource pie chart df
-df2.loc[(df2['Review Source'].notnull()) & (df2['Review Source'].str.contains('amazon', case = False)), 'Review Source'] = 'Amazon'
-reviewSource_df = df2.groupby('Review Source').count().reset_index()
-
-col1, col2 = st.columns([1,1])
+# df2.loc[(df2['Review Source'].notnull()) & (df2['Review Source'].str.contains('amazon', case = False)), 'Review Source'] = 'Amazon'
+# reviewSource_df = df2.groupby('Review Source').count().reset_index()
 
 # inkSupply pie chart df
-inkSupply_df = df2.groupby('Ink Supply Type').count().reset_index()
+# inkSupply_df = df2.groupby('Ink Supply Type').count().reset_index()
 
 # printer family bar chart df
-df2['Printer Family'] = df2['Printer Family'].str.strip().str.title()
-printer_df = df2.groupby('Printer Family').count().sort_values(ascending = False, by = 'Printer Family').reset_index()
+# df2['Printer Family'] = df2['Printer Family'].str.strip().str.title()
+# printer_df = df2.groupby('Printer Family').count().sort_values(ascending = False, by = 'Printer Family').reset_index()
 
 # supplies family bar chart df
-df2['Supplies Family'] = df2['Supplies Family'].str.strip().str.title()
-supplies_df = df2.groupby('Supplies Family').count().sort_values(ascending = False, by = 'Supplies Family').reset_index()
+# df2['Supplies Family'] = df2['Supplies Family'].str.strip().str.title()
+# supplies_df = df2.groupby('Supplies Family').count().sort_values(ascending = False, by = 'Supplies Family').reset_index()
 
 # age/ gender stacked bar chart df
-ageGender_df = df2[(df2['Age Range'].notnull()) & (df2['Gender'].notnull())][['Age Range', 'Gender']].reset_index(drop = True)
-ageGender_df = ageGender_df[((ageGender_df.Gender == 'Male') | (ageGender_df.Gender == 'Female')) & (~(ageGender_df['Age Range'] == 'Prefer not to answer'))]
+# ageGender_df = df2[(df2['Age Range'].notnull()) & (df2['Gender'].notnull())][['Age Range', 'Gender']].reset_index(drop = True)
+# ageGender_df = ageGender_df[((ageGender_df.Gender == 'Male') | (ageGender_df.Gender == 'Female')) & (~(ageGender_df['Age Range'] == 'Prefer not to answer'))]
 
 # sentiment/ time stacked bar chart df
-df2.loc[df2['LTR'] >= 6, 'LTR_binary'] = 'Positive' 
-df2.loc[df2['LTR'] < 6, 'LTR_binary'] = 'Negative'
-sentimentTime_df = df2[['LTR_binary', 'Month of Response Date']]
+# df2.loc[df2['LTR'] >= 6, 'LTR_binary'] = 'Positive' 
+# df2.loc[df2['LTR'] < 6, 'LTR_binary'] = 'Negative'
+# sentimentTime_df = df2[['LTR_binary', 'Month of Response Date']]
+
+# df2 = df[['LTR', 'Star Rating', 'Review Source', 'Supplies Family', 'Printer Family', 'Combined Text', 'Ink Supply Type', 'Month of Response Date', 'Age Range', 'Gender']].drop_duplicates(subset = 'Combined Text')
+# df2['Month of Response Date'] = pd.to_datetime(df2['Month of Response Date'])
+
+# # filter off validation data
+# df2 = df2[df2['Month of Response Date'] < '2024-04-01']
+
+# # extract start-end periods
+# startPeriod_str = df2.sort_values(by = 'Month of Response Date')['Month of Response Date'].dt.strftime('%B %Y').head(1).reset_index()['Month of Response Date'][0]
+# endPeriod_str = df2.sort_values(by = 'Month of Response Date')['Month of Response Date'].dt.strftime('%B %Y').tail(1).reset_index()['Month of Response Date'][0]
+startPeriod_str = startEndPeriods_df['Month of Response Date'].dt.strftime('%B %Y').head(1).reset_index()['Month of Response Date'][0]
+endPeriod_str = startEndPeriods_df['Month of Response Date'].dt.strftime('%B %Y').tail(1).reset_index()['Month of Response Date'][0]
+
+st.header('Visualization of Training Data')
+st.write(f"*Period between {startPeriod_str} - {endPeriod_str}*")
+
+col1, col2 = st.columns([1,1])
 
 with col1:
 
