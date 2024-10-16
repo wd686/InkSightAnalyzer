@@ -46,6 +46,8 @@ try:
     aspect_df = modelResults.runAspectClassification(rawInput_df)
     aspectSentimentOutput_df, overallResultsOutput_df = modelResults.runSentimentExtraction(aspect_df)
 
+    st.subheader('Results')
+
     col1, col2 = st.columns([1,1])
 
     with col1:
