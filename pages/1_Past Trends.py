@@ -30,6 +30,15 @@ supplies_df = df2.groupby('Supplies Family').count().sort_values(ascending = Fal
 df2['Printer Family'] = df2['Printer Family'].str.strip().str.title()
 printer_df = df2.groupby('Printer Family').count().sort_values(ascending = False, by = 'Printer Family').reset_index()
 
+# age/ gender stacked bar chart df
+ageGender_df = df2[(df2['Age Range'].notnull()) & (df2['Gender'].notnull())][['Age Range', 'Gender']].reset_index(drop = True)
+ageGender_df = ageGender_df[((ageGender_df.Gender == 'Male') | (ageGender_df.Gender == 'Female')) & (~(ageGender_df['Age Range'] == 'Prefer not to answer'))]
+
+# sentiment/ time stacked bar chart df
+df2.loc[df2['LTR'] >= 6, 'LTR_binary'] = 'Positive' 
+df2.loc[df2['LTR'] < 6, 'LTR_binary'] = 'Negative'
+sentimentTime_df = df2[['LTR_binary', 'Month of Response Date']]
+
 with col1:
 
     # Extract labels and values from the DataFrame
@@ -133,3 +142,77 @@ with col2:
 
     # Display the chart in Streamlit
     st.pyplot(fig)
+
+
+# Define the custom order for age ranges
+age_order = ['Under 18', '18-24 years', '25-34 years', '35-50 years', '51-65 years', 'Over 65 years']
+
+# Count occurrences of each Gender for each Age Range
+age_gender_counts = ageGender_df.groupby(['Age Range', 'Gender']).size().unstack(fill_value=0)
+
+# Reindex to ensure all categories are included
+age_gender_counts = age_gender_counts.reindex(age_order, fill_value=0)
+
+# Convert 'Age Range' to categorical with specified order
+age_gender_counts.index = pd.CategoricalIndex(age_gender_counts.index, categories=age_order, ordered=True)
+
+# Create the stacked bar chart
+fig, ax = plt.subplots(figsize=(16, 11))
+colors = ['#8470FF', '#FF6F91']  # Light blue and bright pink
+age_gender_counts.plot(kind='bar', stacked=True, ax=ax, color=colors)
+
+# Remove right and top spines
+ax.spines[['right', 'top']].set_visible(False)  # Remove spines
+
+# Add data labels in each bar segment
+for p in ax.patches:
+    height = p.get_height()
+    width = p.get_width()
+    x = p.get_x()
+    y = p.get_y() + height / 2  # Center label vertically within segment
+    ax.text(x + width / 2, y, f"{height:.0f}", ha='center', va='center', color='black', fontsize=10)
+
+# Add labels and title
+ax.set_title('Distribution of Gender by Age Range', fontweight='bold', fontsize=17, pad=10)  # Increase font size for title
+ax.set_xticklabels(age_order, rotation=0)  # Rotate x labels for better readability
+ax.legend(title='Gender', fontsize=12, title_fontsize='14')  # Increase font size for legend and title
+
+# Adjust layout for a tight fit
+plt.tight_layout()
+
+# Display the plot in Streamlit
+st.pyplot(fig)
+
+
+# Count occurrences
+time_Sentiment_counts = sentimentTime_df.groupby(['Month of Response Date', 'LTR_binary']).size().unstack(fill_value=0)
+
+# Format month index
+time_Sentiment_counts.index = pd.to_datetime(time_Sentiment_counts.index).strftime("%b '%y")
+
+# Create the stacked bar chart
+fig, ax = plt.subplots(figsize=(16, 11))
+colors = ['#B22222', '#3CB371']  # red and green
+time_Sentiment_counts.plot(kind='bar', stacked=True, ax=ax, color=colors)
+
+# Remove right and top spines
+ax.spines[['right', 'top']].set_visible(False)
+
+# Add data labels in each bar segment
+for p in ax.patches:
+    height = p.get_height()
+    width = p.get_width()
+    x = p.get_x()
+    y = p.get_y() + height / 2  # Center label vertically within segment
+    ax.text(x + width / 2, y, f"{height:.0f}", ha='center', va='center', color='black', fontsize=10)
+
+# Add labels and title
+ax.set_title('Distribution of Sentiments over Time', fontweight='bold', fontsize=17, pad=10)  # Increase font size for title
+ax.set_xticklabels(time_Sentiment_counts.index, rotation=0)  # Rotate x labels for better readability
+ax.legend(title='Sentiment', fontsize=12, title_fontsize='14')  # Increase font size for legend and title
+
+# Adjust layout for a tight fit
+plt.tight_layout()
+
+# Display the plot in Streamlit
+st.pyplot(fig)
