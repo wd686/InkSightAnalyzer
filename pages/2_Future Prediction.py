@@ -61,11 +61,11 @@ try:
     timePeriod_str = rawInput_df.head(1).reset_index()['Time period'][0]
 
     st.subheader('Results')
+    st.write(f"*{timePeriod_str}*")
 
     col1, col2 = st.columns([1,1])
 
     with col1:
-        st.write("Placeholder1 (Wordcloud Visualization)") # TODO insert word-cloud
 
         # Word-cloud
 
@@ -107,7 +107,6 @@ try:
         st.set_option('deprecation.showPyplotGlobalUse', False)  # Optional: To suppress warnings
         plt.figure(figsize=(12, 8))
         plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold') # Main title
-        plt.title(f"{timePeriod_str}", fontsize=14, fontstyle='italic', pad=10)  # Subtitle
         plt.imshow(wordcloud, interpolation='bilinear')
         plt.axis("off")
 
@@ -115,7 +114,6 @@ try:
         st.pyplot(plt)
         
     with col2:
-        st.write("Placeholder2 (Treemap Visualization)")
 
         # Tree Map
 
@@ -137,9 +135,8 @@ try:
             pad=True
         )
 
-        # Add titles
+        # Add title
         plt.suptitle("Sentiment Heat Map of Printer & Ink Aspects", fontsize=20, fontweight="bold")  # Main title
-        plt.title(f"{timePeriod_str}", fontsize=14, fontstyle='italic', pad=10)  # Subtitle
 
         # Remove axes
         plt.axis('off')
