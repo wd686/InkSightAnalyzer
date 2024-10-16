@@ -3,10 +3,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# hard-coded variables
+df = pd.read_excel('dataSource/Combined Survey+Web review.xlsx')
+
 st.header('Visualization of Training Data')
 st.write(f"*Period between December 2023 - March 2024*")
 
-df = pd.read_excel('../dataSource/Combined Survey+Web review.xlsx')
 df2 = df[['LTR', 'Star Rating', 'Review Source', 'Supplies Family', 'Printer Family', 'Combined Text', 'Ink Supply Type', 'Month of Response Date', 'Age Range', 'Gender']].drop_duplicates(subset = 'Combined Text')
 df2['Month of Response Date'] = pd.to_datetime(df2['Month of Response Date'])
 df2 = df2[df2['Month of Response Date'] < '2024-04-01']
