@@ -6,6 +6,13 @@ import matplotlib.pyplot as plt
 # hard-coded variables
 df = pd.read_excel('dataSource/Combined Survey+Web review.xlsx')
 
+# Set page config
+st.set_page_config(
+    page_title='Past Trends', # Set display name of browser tab
+    layout="wide", # "wide" or "centered"
+    initial_sidebar_state="expanded"
+)
+
 st.header('Visualization of Training Data')
 st.write(f"*Period between December 2023 - March 2024*")
 
