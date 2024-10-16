@@ -76,7 +76,7 @@ with col1:
 
 
     # Create horizontal bar chart
-    fig, ax = plt.subplots(figsize=(16, 10))  # Set the figure size
+    fig, ax = plt.subplots(figsize=(17, 12))  # Set the figure size
     bars = ax.barh(supplies_df['Supplies Family'], supplies_df['LTR'], color='skyblue')  # Create horizontal bars
 
     # Add title
@@ -128,7 +128,7 @@ with col2:
 
 
     # Create horizontal bar chart
-    fig, ax = plt.subplots(figsize=(16, 10))  # Set the figure size
+    fig, ax = plt.subplots(figsize=(17, 12))  # Set the figure size
     bars = ax.barh(printer_df['Printer Family'], printer_df['LTR'], color='skyblue')  # Create horizontal bars
 
     # Add title
