@@ -4,13 +4,11 @@ import pandas as pd
 # hardcoded variables
 ## ...
 
-def aspectClassification(self, logger, rawInput_filepath, aspectOutput_filepath):
+def aspectClassification(self, rawInput_file):
 
-    combined_df = pd.read_csv(rawInput_filepath)
-    logger.info('Read raw input file')
-
+    df = pd.read_csv(rawInput_file)
     # ... pre-processing steps to strip each review into multiple sentences
     # ... run classification model for each sentence
+    aspectOutput_df = df.copy()
 
-    combined_df.to_csv(aspectOutput_filepath) # input file for sentimentExtraction()
-    logger.info('Aspect output file generated')
+    return aspectOutput_df
