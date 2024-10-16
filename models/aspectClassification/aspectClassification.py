@@ -6,11 +6,9 @@ import pandas as pd
 
 def aspectClassification(self, rawInput_file):
 
-    print(type(rawInput_file))
-
-    df = rawInput_file.copy()
+    df = rawInput_file
     # ... pre-processing steps to strip each review into multiple sentences
     # ... run classification model for each sentence
-    aspectOutput_df = df.copy()
+    aspectOutput_df = df
 
     return aspectOutput_df
