@@ -53,6 +53,7 @@ st.set_page_config(
 # # extract start-end periods
 # startPeriod_str = df2.sort_values(by = 'Month of Response Date')['Month of Response Date'].dt.strftime('%B %Y').head(1).reset_index()['Month of Response Date'][0]
 # endPeriod_str = df2.sort_values(by = 'Month of Response Date')['Month of Response Date'].dt.strftime('%B %Y').tail(1).reset_index()['Month of Response Date'][0]
+startEndPeriods_df['Month of Response Date'] = pd.to_datetime(startEndPeriods_df['Month of Response Date'])
 startPeriod_str = startEndPeriods_df['Month of Response Date'].dt.strftime('%B %Y').head(1).reset_index()['Month of Response Date'][0]
 endPeriod_str = startEndPeriods_df['Month of Response Date'].dt.strftime('%B %Y').tail(1).reset_index()['Month of Response Date'][0]
 
