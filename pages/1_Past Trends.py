@@ -51,8 +51,6 @@ st.set_page_config(
 # df2 = df2[df2['Month of Response Date'] < '2024-04-01']
 
 # # extract start-end periods
-# startPeriod_str = df2.sort_values(by = 'Month of Response Date')['Month of Response Date'].dt.strftime('%B %Y').head(1).reset_index()['Month of Response Date'][0]
-# endPeriod_str = df2.sort_values(by = 'Month of Response Date')['Month of Response Date'].dt.strftime('%B %Y').tail(1).reset_index()['Month of Response Date'][0]
 startPeriod_str = startEndPeriods_df.head(1).reset_index()['Month of Response Date'][0]
 endPeriod_str = startEndPeriods_df.tail(1).reset_index()['Month of Response Date'][0]
 
