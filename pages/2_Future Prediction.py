@@ -61,7 +61,7 @@ try:
     timePeriod_str = rawInput_df.head(1).reset_index()['Time period'][0]
 
     st.subheader('Results')
-    st.write(f"*{timePeriod_str}*")
+    st.write(f"Time period: *{timePeriod_str}*")
 
     col1, col2 = st.columns([1,1])
 
