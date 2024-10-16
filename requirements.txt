@@ -27,4 +27,4 @@ torchvision==0.17.2
 torchaudio==2.2.2
 squarify
 nltk
-wordcloud==1.8.1
+wordcloud

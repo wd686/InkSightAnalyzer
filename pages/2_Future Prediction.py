@@ -5,8 +5,8 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 import squarify
-import nltk
 import string
+import nltk
 from nltk.corpus import stopwords
 from wordcloud import WordCloud
 from controller import controllerService
