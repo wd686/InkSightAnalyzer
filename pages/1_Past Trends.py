@@ -55,7 +55,7 @@ startPeriod_str = startEndPeriods_df.head(1).reset_index()['Month of Response Da
 endPeriod_str = startEndPeriods_df.tail(1).reset_index()['Month of Response Date'][0]
 
 st.header('Visualization of Training Data')
-st.write(f"*Period between {startPeriod_str} - {endPeriod_str}*")
+st.write(f"Time period: *{startPeriod_str} - {endPeriod_str}*")
 
 col1, col2 = st.columns([1,1])
 
