@@ -1,7 +1,0 @@
-# for repo!
-
-pandas==2.0.3
-numpy==1.24.4
-nltk==3.8.1
-transformers==4.33.0
-torch==2.0.1

@@ -1,5 +1,5 @@
-from models.aspectClassification.aspectClassification import aspectClassification
-from models.sentimentExtraction.sentimentExtraction import sentimentExtraction
+from models.aspectClassification import aspectClassification
+from models.sentimentExtraction import sentimentExtraction
 
 class controllerService:
 
