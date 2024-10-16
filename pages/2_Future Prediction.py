@@ -119,7 +119,7 @@ try:
 
         # Normalize sentiment values and apply colors
         norm = matplotlib.colors.Normalize(vmin=min(overallResultsOutput_df.Sentiment), vmax=max(overallResultsOutput_df.Sentiment))
-        colors = [matplotlib.cm.Greens(norm(value)) for value in overallResultsOutput_df.Sentiment]
+        colors = [matplotlib.cm.Reds_r(norm(value)) for value in overallResultsOutput_df.Sentiment]
         # # Create a colormap from red to green
         # cmap = plt.get_cmap('RdYlGn')  # Use a diverging color map (Red to Yellow to Green)
         # colors = [cmap(norm(value)) for value in overallResultsOutput_df.Sentiment]
