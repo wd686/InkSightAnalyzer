@@ -134,7 +134,7 @@ try:
             sizes=overallResultsOutput_df.Total,
             value=overallResultsOutput_df.Sentiment,
             color=colors,
-            alpha=.5,
+            alpha=.6,
             pad=True
         )
 
