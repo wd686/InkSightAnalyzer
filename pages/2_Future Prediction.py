@@ -105,8 +105,8 @@ try:
 
         # Plot the word cloud using Streamlit
         st.set_option('deprecation.showPyplotGlobalUse', False)  # Optional: To suppress warnings
-        plt.figure(figsize=(10, 5))
-        plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold', fontname='Calibri') # Main title
+        plt.figure(figsize=(12, 8))
+        plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold') # Main title
         plt.title(f"{timePeriod_str}", fontsize=14, fontstyle='italic', pad=10)  # Subtitle
         plt.imshow(wordcloud, interpolation='bilinear')
         plt.axis("off")
