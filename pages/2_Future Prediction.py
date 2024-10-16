@@ -51,7 +51,7 @@ try:
     with col1:
         st.write("Placeholder1 (Wordcloud Visualization)") # TODO insert word-cloud
     with col2:
-         st.write("Placeholder2 (Treemap Visualization)") # TODO insert tree map
+        st.write("Placeholder2 (Treemap Visualization)") # TODO insert tree map
 
     st.download_button("Download Aspect-Sentiment Output CSV file",
                     aspectSentimentOutput_df.to_csv(index = False),
