@@ -56,7 +56,7 @@ with col1:
     total_value = sum(sizes)
 
     # Create the pie chart
-    fig, ax = plt.subplots(figsize=(6, 6))  # Adjust figure size
+    fig, ax = plt.subplots(figsize=(3, 3))  # Adjust figure size
     ax.pie(
         sizes, 
         labels=labels, 
@@ -108,7 +108,7 @@ with col2:
     total_value = sum(sizes)
 
     # Create the pie chart
-    fig, ax = plt.subplots(figsize=(6, 6))  # Adjust figure size
+    fig, ax = plt.subplots(figsize=(3, 3))  # Adjust figure size
     ax.pie(
         sizes, 
         labels=labels, 
