@@ -40,8 +40,8 @@ st.write("## About this Webpage")
 
 st.markdown(
     '''
-This platform allows users to visualize the various aspects and its respetive sentiments obtained from a set of 'printer & ink' related customer surveys.\
- Additionally, users are also able to input adhoc text comments relating to 'printer & ink' and obtain its respective aspects and sentiments. 
+This platform allows users to visualize historical trends obtained from a set of 'printer & ink' related customer surveys.\
+ Users are also able to input new survey data relating to 'printer & ink' and obtain its respective aspects and sentiments on the fly. 
 '''
 )
 
@@ -50,10 +50,11 @@ st.write("## Table of Contents")
 st.markdown(
 f'''
 **Results**\n
-This section allows users to visualize the various aspects and its respetive sentiments obtained from a set of 'printer & ink' related customer surveys.
+This section allow users to visualize historical trends obtained from a set of 'printer & ink' related customer surveys.
 
 **Prediction**\n
-This section allows users to input adhoc text comments relating to 'printer & ink' and obtain its respective aspects and sentiments.
+This section allow users to input new survey data relating to 'printer & ink' and obtain its respective aspects and sentiments on the fly.\
+ Additional CSV files can also be downloaded for more ganular details.
 
 '''
 )
