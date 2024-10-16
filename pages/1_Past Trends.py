@@ -29,13 +29,13 @@ col1, col2 = st.columns([1,1])
 # inkSupply pie chart df
 inkSupply_df = df2.groupby('Ink Supply Type').count().reset_index()
 
-# supplies family bar chart df
-df2['Supplies Family'] = df2['Supplies Family'].str.strip().str.title()
-supplies_df = df2.groupby('Supplies Family').count().sort_values(ascending = False, by = 'Supplies Family').reset_index()
-
 # printer family bar chart df
 df2['Printer Family'] = df2['Printer Family'].str.strip().str.title()
 printer_df = df2.groupby('Printer Family').count().sort_values(ascending = False, by = 'Printer Family').reset_index()
+
+# supplies family bar chart df
+df2['Supplies Family'] = df2['Supplies Family'].str.strip().str.title()
+supplies_df = df2.groupby('Supplies Family').count().sort_values(ascending = False, by = 'Supplies Family').reset_index()
 
 # age/ gender stacked bar chart df
 ageGender_df = df2[(df2['Age Range'].notnull()) & (df2['Gender'].notnull())][['Age Range', 'Gender']].reset_index(drop = True)
@@ -77,10 +77,10 @@ with col1:
 
     # Create horizontal bar chart
     fig, ax = plt.subplots(figsize=(17, 12))  # Set the figure size
-    bars = ax.barh(supplies_df['Supplies Family'], supplies_df['LTR'], color='skyblue')  # Create horizontal bars
+    bars = ax.barh(printer_df['Printer Family'], printer_df['LTR'], color='skyblue')  # Create horizontal bars
 
     # Add title
-    ax.set_title('Supplies Family Distribution', fontweight='bold', pad=10)  # Title of the chart
+    ax.set_title('Printer Family Distribution', fontweight='bold', pad=10)  # Title of the chart
 
     # Remove right and top spines
     ax.spines[['right', 'top']].set_visible(False)  # Remove spines
@@ -93,7 +93,7 @@ with col1:
                 ha='left')  # Align the text to the left
 
     # Adjust y-axis limits to remove gaps
-    ax.set_ylim(-0.5, len(supplies_df) - 0.2)  # Set limits to fit bars tightly
+    ax.set_ylim(-0.5, len(printer_df) - 0.2)  # Set limits to fit bars tightly
 
     # Display the chart in Streamlit
     st.pyplot(fig)
@@ -129,10 +129,10 @@ with col2:
 
     # Create horizontal bar chart
     fig, ax = plt.subplots(figsize=(17, 12))  # Set the figure size
-    bars = ax.barh(printer_df['Printer Family'], printer_df['LTR'], color='skyblue')  # Create horizontal bars
+    bars = ax.barh(supplies_df['Supplies Family'], supplies_df['LTR'], color='skyblue')  # Create horizontal bars
 
     # Add title
-    ax.set_title('Printer Family Distribution', fontweight='bold', pad=10)  # Title of the chart
+    ax.set_title('Supplies Family Distribution', fontweight='bold', pad=10)  # Title of the chart
 
     # Remove right and top spines
     ax.spines[['right', 'top']].set_visible(False)  # Remove spines
@@ -145,7 +145,7 @@ with col2:
                 ha='left')  # Align the text to the left
 
     # Adjust y-axis limits to remove gaps
-    ax.set_ylim(-0.5, len(printer_df) - 0.2)  # Set limits to fit bars tightly
+    ax.set_ylim(-0.5, len(supplies_df) - 0.2)  # Set limits to fit bars tightly
 
     # Display the chart in Streamlit
     st.pyplot(fig)
@@ -165,7 +165,7 @@ age_gender_counts.index = pd.CategoricalIndex(age_gender_counts.index, categorie
 
 # Create the stacked bar chart
 fig, ax = plt.subplots(figsize=(15, 9))
-colors = ['#8470FF', '#FF6F91']  # Light blue and bright pink
+colors = ['#FF6F91', '#8470FF']
 age_gender_counts.plot(kind='bar', stacked=True, ax=ax, color=colors)
 
 # Remove right and top spines
