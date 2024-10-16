@@ -63,7 +63,7 @@ try:
     st.subheader('Results')
     st.write(f"Time period:     *{timePeriod_str}*")
 
-    col1, col2 = st.columns([1,1])
+    col1, col2 = st.columns([1,1]) 
 
     with col1:
 
