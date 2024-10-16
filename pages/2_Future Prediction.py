@@ -5,7 +5,15 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 import squarify
+import nltk
+import string
+from nltk.corpus import stopwords
+from wordcloud import WordCloud
 from controller import controllerService
+
+# download NLTK packages
+nltk.download('stopwords')
+nltk.download('wordnet')
 
 # Set page config
 st.set_page_config(
@@ -56,6 +64,52 @@ try:
 
     with col1:
         st.write("Placeholder1 (Wordcloud Visualization)") # TODO insert word-cloud
+
+        # Word-cloud
+
+        def preprocess_text(tokens):
+
+            # Convert all characters to lower case
+            tokens = [t.lower() for t in tokens]
+
+            # Remove Punctuations
+            tokens = [t for t in tokens if t not in string.punctuation]
+
+            # Remove Stopwords
+            stop = stopwords.words('english')
+            tokens = [t for t in tokens if t not in stop]
+
+            # Remove from filtered list (additional)
+            filter_list = ["“", "”", "would", "could", "'s", "left", "right", "a.m.", "p.m."]
+            tokens = [t for t in tokens if t not in filter_list]
+
+            # Remove Numbers/Numerics
+            tokens = [t for t in tokens if not t.isnumeric()]
+
+            # Lemmatization
+            wnl = nltk.WordNetLemmatizer()
+            tokens = [wnl.lemmatize(t) for t in tokens] 
+
+            return tokens
+        
+        # Apply the preprocessing to each review
+        rawInput_df['Processed_Reviews'] = rawInput_df['Reviews'].apply(lambda x: ' '.join(preprocess_text(x.split())))
+
+        # Combine all reviews into a single string for word cloud
+        all_reviews = ' '.join(rawInput_df['Processed_Reviews'])
+
+        # Generate the word cloud
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_reviews)
+
+        # Plot the word cloud using Streamlit
+        st.set_option('deprecation.showPyplotGlobalUse', False)  # Optional: To suppress warnings
+        plt.figure(figsize=(10, 5))
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis('off')
+
+        # Display the word cloud in Streamlit
+        st.pyplot(plt)
+        
     with col2:
         st.write("Placeholder2 (Treemap Visualization)")
 
