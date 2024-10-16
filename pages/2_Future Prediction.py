@@ -58,6 +58,8 @@ try:
     aspect_df = modelResults.runAspectClassification(rawInput_df)
     aspectSentimentOutput_df, overallResultsOutput_df = modelResults.runSentimentExtraction(aspect_df)
 
+    timePeriod_str = rawInput_df.head(1).reset_index()['Time period'][0]
+
     st.subheader('Results')
 
     col1, col2 = st.columns([1,1])
@@ -104,8 +106,10 @@ try:
         # Plot the word cloud using Streamlit
         st.set_option('deprecation.showPyplotGlobalUse', False)  # Optional: To suppress warnings
         plt.figure(figsize=(10, 5))
+        plt.suptitle("Word Cloud of Reviews", fontsize=20, x=0.5, y=0.85, fontweight='bold', fontname='Calibri') # Main title
+        plt.title(f"{timePeriod_str}", fontsize=14, fontstyle='italic', pad=10)  # Subtitle
         plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis('off')
+        plt.axis("off")
 
         # Display the word cloud in Streamlit
         st.pyplot(plt)
@@ -114,7 +118,6 @@ try:
         st.write("Placeholder2 (Treemap Visualization)")
 
         # Tree Map
-        timePeriod_str = rawInput_df.head(1).reset_index()['Time period'][0]
 
         # Normalize sentiment values and apply colors
         norm = matplotlib.colors.Normalize(vmin=min(overallResultsOutput_df.Sentiment), vmax=max(overallResultsOutput_df.Sentiment))
