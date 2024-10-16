@@ -7,7 +7,7 @@ class controllerService:
         return
     
     def runAspectClassification(self, rawInput_file):
-        aspectClassification(self, rawInput_file)
+        return aspectClassification(self, rawInput_file)
 
     def runSentimentExtraction(self, aspectInput_df):
-        sentimentExtraction(self, aspectInput_df)
+        return sentimentExtraction(self, aspectInput_df)
