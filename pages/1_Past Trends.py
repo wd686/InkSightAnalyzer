@@ -89,7 +89,7 @@ with col1:
 
 
     # Create horizontal bar chart
-    fig, ax = plt.subplots(figsize=(17, 12))  # Set the figure size
+    fig, ax = plt.subplots(figsize=(20, 15))  # Set the figure size
     bars = ax.barh(printer_df['Printer Family'], printer_df['LTR'], color='skyblue')  # Create horizontal bars
 
     # Add title
@@ -141,7 +141,7 @@ with col2:
 
 
     # Create horizontal bar chart
-    fig, ax = plt.subplots(figsize=(17, 12))  # Set the figure size
+    fig, ax = plt.subplots(figsize=(20, 15))  # Set the figure size
     bars = ax.barh(supplies_df['Supplies Family'], supplies_df['LTR'], color='skyblue')  # Create horizontal bars
 
     # Add title
@@ -177,7 +177,7 @@ age_gender_counts = age_gender_counts.reindex(age_order, fill_value=0)
 age_gender_counts.index = pd.CategoricalIndex(age_gender_counts.index, categories=age_order, ordered=True)
 
 # Create the stacked bar chart
-fig, ax = plt.subplots(figsize=(15, 9))
+fig, ax = plt.subplots(figsize=(13, 7))
 colors = ['#FF6F91', '#8470FF']
 age_gender_counts.plot(kind='bar', stacked=True, ax=ax, color=colors)
 
@@ -211,7 +211,7 @@ time_Sentiment_counts = sentimentTime_df.groupby(['Month of Response Date', 'LTR
 time_Sentiment_counts.index = pd.to_datetime(time_Sentiment_counts.index).strftime("%b '%y")
 
 # Create the stacked bar chart
-fig, ax = plt.subplots(figsize=(15, 9))
+fig, ax = plt.subplots(figsize=(13, 7))
 colors = ['#B22222', '#3CB371']  # red and green
 time_Sentiment_counts.plot(kind='bar', stacked=True, ax=ax, color=colors)
 
