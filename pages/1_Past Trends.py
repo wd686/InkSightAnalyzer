@@ -20,6 +20,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# df2 = df.drop_duplicates(subset = 'Survey ID')[['LTR', 'Star Rating', 'Review Source', 'Supplies Family', 'Printer Family', 'Combined Text', 'Ink Supply Type', 'Month of Response Date', 'Age Range', 'Gender']]
+# df2['Month of Response Date'] = pd.to_datetime(df2['Month of Response Date'])
+
+# # filter off validation data
+# df2 = df2[df2['Month of Response Date'] < '2024-04-01']
+
 # reviewSource pie chart df
 # df2.loc[(df2['Review Source'].notnull()) & (df2['Review Source'].str.contains('amazon', case = False)), 'Review Source'] = 'Amazon'
 # reviewSource_df = df2.groupby('Review Source').count().reset_index()
@@ -40,17 +46,30 @@ st.set_page_config(
 # ageGender_df = ageGender_df[((ageGender_df.Gender == 'Male') | (ageGender_df.Gender == 'Female')) & (~(ageGender_df['Age Range'] == 'Prefer not to answer'))]
 
 # sentiment/ time stacked bar chart df
-# df2.loc[df2['LTR'] >= 6, 'LTR_binary'] = 'Positive' 
-# df2.loc[df2['LTR'] < 6, 'LTR_binary'] = 'Negative'
-# sentimentTime_df = df2[['LTR_binary', 'Month of Response Date']]
-
-# df2 = df[['LTR', 'Star Rating', 'Review Source', 'Supplies Family', 'Printer Family', 'Combined Text', 'Ink Supply Type', 'Month of Response Date', 'Age Range', 'Gender']].drop_duplicates(subset = 'Combined Text')
-# df2['Month of Response Date'] = pd.to_datetime(df2['Month of Response Date'])
-
-# # filter off validation data
-# df2 = df2[df2['Month of Response Date'] < '2024-04-01']
+# def score_to_sentiment(row):
+#     if not pd.isna(row['LTR']):
+#         # Use LTR (0-10)
+#         if row['LTR'] <= 4:
+#             return 'Negative'
+#         else:
+#             return 'Positive'
+#     elif not pd.isna(row['Star Rating']):
+#         # Use Star Rating (1-5)
+#         if row['Star Rating'] <= 2:
+#             return 'Negative'
+#         else:
+#             return 'Positive'
+#     else:
+#         return 'Unknown'
+# sentiment_list = []
+# for index, row in df2.iterrows():
+#     sentiment_list.append(score_to_sentiment(row))
+# df2['sentiment'] = sentiment_list
+# sentimentTime_df = df2[df2.sentiment.isin(['Negative', 'Positive'])][['sentiment', 'Month of Response Date']]
 
 # # extract start-end periods
+# startEndPeriods_df = pd.concat([df2.sort_values(by = 'Month of Response Date')['Month of Response Date'].dt.strftime('%B %Y').head(1),
+#                                 df2.sort_values(by = 'Month of Response Date')['Month of Response Date'].dt.strftime('%B %Y').tail(1)], axis =0)
 startPeriod_str = startEndPeriods_df.head(1).reset_index()['Month of Response Date'][0]
 endPeriod_str = startEndPeriods_df.tail(1).reset_index()['Month of Response Date'][0]
 
