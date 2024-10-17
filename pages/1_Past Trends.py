@@ -205,7 +205,7 @@ st.pyplot(fig)
 
 
 # Count occurrences
-time_Sentiment_counts = sentimentTime_df.groupby(['Month of Response Date', 'LTR_binary']).size().unstack(fill_value=0)
+time_Sentiment_counts = sentimentTime_df.groupby(['Month of Response Date', 'sentiment']).size().unstack(fill_value=0)
 
 # Format month index
 time_Sentiment_counts.index = pd.to_datetime(time_Sentiment_counts.index).strftime("%b '%y")
