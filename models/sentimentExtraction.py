@@ -39,7 +39,7 @@ def sentimentExtraction(self, aspectInput_df):
     #     'Pos': [4, 33, 42, 0, 22],
     #     'Neg': [54, 0, 3, 47, 22],
     #     'Total': [58, 33, 45, 47, 44],
-    #     'Category': ['Quality', 'Cost', 'Shipment', 'Services', 'Instant Ink'],
+    #     'Category': ['Product Quality', 'Price', 'Delivery', 'Customer Service', 'Instant Ink'],
     #     'Sentiment': [-0.86, 1.00, 0.87, -1.00, 0.00]
     # }
 
@@ -47,7 +47,7 @@ def sentimentExtraction(self, aspectInput_df):
         'Pos': [4, 17, 42, 16],
         'Neg': [54, 14, 3, 25],
         'Total': [58, 31, 45, 41],
-        'Category': ['Quality', 'Cost', 'Shipment', 'Services'],
+        'Category': ['Price', 'Customer Service', 'Product Quality', 'Delivery'],
         'Sentiment': [-0.86, 0.10, 0.87, -0.22]
     }
 
