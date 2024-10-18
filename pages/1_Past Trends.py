@@ -49,13 +49,13 @@ st.set_page_config(
 # def score_to_sentiment(row):
 #     if not pd.isna(row['LTR']):
 #         # Use LTR (0-10)
-#         if row['LTR'] <= 4:
+#         if row['LTR'] <= 6:
 #             return 'Negative'
 #         else:
 #             return 'Positive'
 #     elif not pd.isna(row['Star Rating']):
 #         # Use Star Rating (1-5)
-#         if row['Star Rating'] <= 2:
+#         if row['Star Rating'] <= 3:
 #             return 'Negative'
 #         else:
 #             return 'Positive'
