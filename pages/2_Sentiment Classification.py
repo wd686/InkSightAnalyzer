@@ -113,7 +113,7 @@ try:
         # Display the word cloud in Streamlit
         st.pyplot(plt)
         
-    with col2:
+    # with col2:
 
         # # Tree Map
 
