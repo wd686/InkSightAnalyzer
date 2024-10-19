@@ -8,7 +8,7 @@ from transformers import pipeline
 
 def aspectClassification(self, rawInput_file):
 
-    df = rawInput_file
+    df = rawInput_file.copy()
 
     # Pre-processing steps to strip each review into multiple sentences
 
@@ -42,7 +42,7 @@ def aspectClassification(self, rawInput_file):
     # Apply the aspect classification
     sentence_df['Aspect'] = sentence_df['Sentence'].apply(lambda row: classify_aspect(row, aspects))
 
-    aspectOutput_df = sentence_df
+    aspectOutput_df = sentence_df.copy()
 
     # Transfrom df to aspectOutput_df and replace hard-coding below
     # data = {

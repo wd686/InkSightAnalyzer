@@ -8,7 +8,7 @@ from transformers import pipeline
 
 def sentimentExtraction(self, aspectInput_df):
 
-    df = aspectInput_df
+    df = aspectInput_df.copy()
 
     # Run sentiment model for each sentence (containing 1 aspect) to obtain sentiment
 
@@ -24,27 +24,27 @@ def sentimentExtraction(self, aspectInput_df):
     # Apply sentiment classification and append the result
     df['Sentiment'] = df['Sentence'].apply(classify_sentiment)
 
-    aspectSentimentOutput_df = df
+    aspectSentimentOutput_df = df.copy()
 
     # Transfrom df to aspectSentimentOutput_df
 
-    aspectSentimentOutput_df.drop(columns = ['Sentence', 'Review_ID'], inplace = True)
+    df.drop(columns = ['Sentence', 'Review_ID'], inplace = True)
 
     # Create a pivot table to count positive and negative sentiments for each aspect
-    aspectSentimentOutput_df = aspectSentimentOutput_df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
+    df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
 
     #Add a 'Total' column to get the sum of positive and negative sentiments
-    aspectSentimentOutput_df['Total'] = aspectSentimentOutput_df['POSITIVE'] + aspectSentimentOutput_df['NEGATIVE']
+    df['Total'] = df['POSITIVE'] + df['NEGATIVE']
 
      #add two new columns into the table
-    aspectSentimentOutput_df["Category"] = aspectSentimentOutput_df.index
+    df["Category"] = df.index
 
     #represent overall sentiment for the categary based on num of pos/neg
-    aspectSentimentOutput_df["Sentiment"] = np.round((aspectSentimentOutput_df["POSITIVE"]-aspectSentimentOutput_df["NEGATIVE"])/
-                                                     (aspectSentimentOutput_df["NEGATIVE"]+aspectSentimentOutput_df["POSITIVE"]),2)
+    df["Sentiment"] = np.round((df["POSITIVE"]-df["NEGATIVE"])/
+                                                     (df["NEGATIVE"]+df["POSITIVE"]),2)
     
-    aspectSentimentOutput_df.rename(columns = {'POSITIVE':'Pos', 'NEGATIVE':'Neg'}, inplace = True)
-    overallResultsOutput_df = aspectSentimentOutput_df
+    df.rename(columns = {'POSITIVE':'Positive', 'NEGATIVE':'Negative'}, inplace = True)
+    overallResultsOutput_df = df
 
     # data = {
     #     'Reviews': [
