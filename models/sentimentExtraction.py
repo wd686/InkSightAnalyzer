@@ -34,10 +34,10 @@ def sentimentExtraction(self, aspectInput_df):
     aspectSentimentOutput_df = aspectSentimentOutput_df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
 
     ###########
-    # Add a 'Total' column to get the sum of positive and negative sentiments
-    aspectSentimentOutput_df['Total'] = aspectSentimentOutput_df['Positive'] + aspectSentimentOutput_df['Negative']
+    # #Add a 'Total' column to get the sum of positive and negative sentiments
+    # aspectSentimentOutput_df['Total'] = aspectSentimentOutput_df['Positive'] + aspectSentimentOutput_df['Negative']
 
-    #add two new columns into the table
+    #  #add two new columns into the table
     # aspectSentimentOutput_df["Category"] = aspectSentimentOutput_df.index
 
     # #represent overall sentiment for the categary based on num of pos/neg
