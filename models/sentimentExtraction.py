@@ -24,6 +24,7 @@ def sentimentExtraction(self, aspectInput_df):
     # Apply sentiment classification and append the result
     df['Sentiment'] = df['Sentence'].apply(classify_sentiment)
 
+    df.rename(columns = {'POSITIVE':'Positive', 'NEGATIVE':'Negative'}, inplace = True)
     aspectSentimentOutput_df = df.copy()
 
     # Transfrom df to aspectSentimentOutput_df
@@ -34,17 +35,16 @@ def sentimentExtraction(self, aspectInput_df):
     df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
 
     #Add a 'Total' column to get the sum of positive and negative sentiments
-    df['Total'] = df['POSITIVE'] + df['NEGATIVE']
+    df['Total'] = df['Positive'] + df['Negative']
 
      #add two new columns into the table
     df["Category"] = df.index
 
     #represent overall sentiment for the categary based on num of pos/neg
-    df["Sentiment"] = np.round((df["POSITIVE"]-df["NEGATIVE"])/
-                                                     (df["NEGATIVE"]+df["POSITIVE"]),2)
+    df["Sentiment"] = np.round((df["Positive"]-df["Negative"])/
+                                                     (df["Negative"]+df["Positive"]),2)
     
-    df.rename(columns = {'POSITIVE':'Positive', 'NEGATIVE':'Negative'}, inplace = True)
-    overallResultsOutput_df = df
+    overallResultsOutput_df = df.copy()
 
     # data = {
     #     'Reviews': [

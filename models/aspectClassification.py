@@ -1,10 +1,10 @@
 import pandas as pd
 import nltk
-nltk.download('punkt')
-nltk.download('punkt_tab')
 from nltk.tokenize import sent_tokenize
 from transformers import pipeline
 # import model from hugging face
+
+nltk.download('punkt_tab')
 
 def aspectClassification(self, rawInput_file):
 
