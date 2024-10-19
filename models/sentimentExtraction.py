@@ -24,7 +24,8 @@ def sentimentExtraction(self, aspectInput_df):
     # Apply sentiment classification and append the result
     df['Sentiment'] = df['Sentence'].apply(classify_sentiment)
 
-    df.rename(columns = {'POSITIVE':'Positive', 'NEGATIVE':'Negative'}, inplace = True)
+    df.loc[df.Sentiment == 'POSITIVE', 'Sentiment'] = 'Positive'
+    df.loc[df.Sentiment == 'NEGATIVE', 'Sentiment'] = 'Negative'
     aspectSentimentOutput_df = df.copy()
 
     # Transfrom df to aspectSentimentOutput_df
