@@ -1,6 +1,7 @@
 import pandas as pd
 import nltk
-nltk.download('punkt')  # Download the tokenizer
+nltk.download('punkt')
+nltk.download('punkt_tab')
 from nltk.tokenize import sent_tokenize
 from transformers import pipeline
 # import model from hugging face
