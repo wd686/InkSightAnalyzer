@@ -3,17 +3,14 @@ import numpy as np
 from transformers import pipeline
 # import model from hugging face
 
-# hardcoded variables
-## ...
-
 def sentimentExtraction(self, aspectInput_df):
+
+    # Load sentiment analysis model
+    sentiment_model = pipeline('sentiment-analysis') # 'distilbert-base-uncased-finetuned-sst-2-english' model
 
     df = aspectInput_df.copy()
 
     # Run sentiment model for each sentence (containing 1 aspect) to obtain sentiment
-
-    # Load sentiment analysis model
-    sentiment_model = pipeline('sentiment-analysis')
 
     def classify_sentiment(row):
         # Classify sentiment using the sentiment model

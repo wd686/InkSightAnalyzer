@@ -8,6 +8,9 @@ nltk.download('punkt_tab')
 
 def aspectClassification(self, rawInput_file):
 
+    # Load pre-trained zero-shot classification model for aspect classification
+    classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+
     df = rawInput_file.copy()
 
     # Pre-processing steps to strip each review into multiple sentences
@@ -26,9 +29,6 @@ def aspectClassification(self, rawInput_file):
     sentence_df = split_into_sentences(df)
 
     # Run classification model for each sentence
-
-    # Load pre-trained zero-shot classification model for aspect classification
-    classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
     # Aspects you're classifying
     aspects = ['Price', 'Customer Service', 'Product Quality', 'Delivery']
