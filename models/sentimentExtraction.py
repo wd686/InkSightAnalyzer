@@ -33,20 +33,17 @@ def sentimentExtraction(self, aspectInput_df):
     # Create a pivot table to count positive and negative sentiments for each aspect
     aspectSentimentOutput_df = aspectSentimentOutput_df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
 
-    ###########
-    # #Add a 'Total' column to get the sum of positive and negative sentiments
-    # aspectSentimentOutput_df['Total'] = aspectSentimentOutput_df['Positive'] + aspectSentimentOutput_df['Negative']
+    #Add a 'Total' column to get the sum of positive and negative sentiments
+    aspectSentimentOutput_df['Total'] = aspectSentimentOutput_df['POSITIVE'] + aspectSentimentOutput_df['NEGATIVE']
 
-    #  #add two new columns into the table
-    # aspectSentimentOutput_df["Category"] = aspectSentimentOutput_df.index
+     #add two new columns into the table
+    aspectSentimentOutput_df["Category"] = aspectSentimentOutput_df.index
 
-    # #represent overall sentiment for the categary based on num of pos/neg
-    # aspectSentimentOutput_df["Sentiment"] = np.round((aspectSentimentOutput_df["Positive"]-aspectSentimentOutput_df["Negative"])/
-    #                                                  (aspectSentimentOutput_df["Negative"]+aspectSentimentOutput_df["Positive"]),2)
+    #represent overall sentiment for the categary based on num of pos/neg
+    aspectSentimentOutput_df["Sentiment"] = np.round((aspectSentimentOutput_df["POSITIVE"]-aspectSentimentOutput_df["NEGATIVE"])/
+                                                     (aspectSentimentOutput_df["NEGATIVE"]+aspectSentimentOutput_df["POSITIVE"]),2)
     
-    # aspectSentimentOutput_df.rename(columns = {'Positive':'Pos', 'Negative':'Neg'}, inplace = True)
-    #######################
-
+    aspectSentimentOutput_df.rename(columns = {'POSITIVE':'Pos', 'NEGATIVE':'Neg'}, inplace = True)
     overallResultsOutput_df = aspectSentimentOutput_df
 
     # data = {
