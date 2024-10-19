@@ -28,3 +28,4 @@ torchaudio==2.2.2
 squarify
 nltk
 wordcloud
+transformers
