@@ -17,7 +17,7 @@ nltk.download('wordnet')
 
 # Set page config
 st.set_page_config(
-    page_title='Future Prediction', # Set display name of browser tab
+    page_title='Sentiment Classification', # Set display name of browser tab
     layout="wide", # "wide" or "centered"
     initial_sidebar_state="expanded"
 )

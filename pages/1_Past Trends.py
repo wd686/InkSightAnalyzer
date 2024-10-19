@@ -73,7 +73,7 @@ st.set_page_config(
 startPeriod_str = startEndPeriods_df.head(1).reset_index()['Month of Response Date'][0]
 endPeriod_str = startEndPeriods_df.tail(1).reset_index()['Month of Response Date'][0]
 
-st.header('Visualization of Training Data')
+st.header('Visualization of Past Data')
 st.write(f"Time period: *{startPeriod_str} - {endPeriod_str}*")
 
 col1, col2 = st.columns([1,1])
