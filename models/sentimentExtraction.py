@@ -36,14 +36,17 @@ def sentimentExtraction(self, aspectInput_df):
     # Add a 'Total' column to get the sum of positive and negative sentiments
     aspectSentimentOutput_df['Total'] = aspectSentimentOutput_df['Positive'] + aspectSentimentOutput_df['Negative']
 
+    ###########
     #add two new columns into the table
-    aspectSentimentOutput_df["Category"] = aspectSentimentOutput_df.index
+    # aspectSentimentOutput_df["Category"] = aspectSentimentOutput_df.index
 
-    #represent overall sentiment for the categary based on num of pos/neg
-    aspectSentimentOutput_df["Sentiment"] = np.round((aspectSentimentOutput_df["Positive"]-aspectSentimentOutput_df["Negative"])/
-                                                     (aspectSentimentOutput_df["Negative"]+aspectSentimentOutput_df["Positive"]),2)
+    # #represent overall sentiment for the categary based on num of pos/neg
+    # aspectSentimentOutput_df["Sentiment"] = np.round((aspectSentimentOutput_df["Positive"]-aspectSentimentOutput_df["Negative"])/
+    #                                                  (aspectSentimentOutput_df["Negative"]+aspectSentimentOutput_df["Positive"]),2)
     
-    aspectSentimentOutput_df.rename(columns = {'Positive':'Pos', 'Negative':'Neg'}, inplace = True)
+    # aspectSentimentOutput_df.rename(columns = {'Positive':'Pos', 'Negative':'Neg'}, inplace = True)
+    #######################
+    
     overallResultsOutput_df = aspectSentimentOutput_df
 
     # data = {
