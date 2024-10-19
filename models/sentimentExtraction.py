@@ -48,6 +48,7 @@ def sentimentExtraction(self, aspectInput_df):
     ]
     aspectInput_df['Sentiment'] = sentiment_list
     aspectSentimentOutput_df = aspectInput_df.copy()
+    df = aspectSentimentOutput_df.copy()
 
     #####################################################################################################
         
