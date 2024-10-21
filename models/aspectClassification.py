@@ -89,21 +89,21 @@ def aspectClassification(self, rawInput_file):
     # Function to load model, predict, and update DataFrame
     def predict_and_update_dataframe (model_name, df, text_column='Reviews', output_labels=None, batch_size=16):
         # Load the tokenizer using relative paths
-        try:
+        # try:
 
         # import pdb;pdb.set_trace()
-            tokenizer = AutoTokenizer.from_pretrained(model_name)
-        except Exception as e:
-            print(f"Error loading tokenizer: {e}")
-            return
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        # except Exception as e:
+        #     print(f"Error loading tokenizer: {e}")
+        #     return
 
         # Instantiate the model and load the weights
-        try:
-            model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=len(output_labels))
+        # try:
+        model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=len(output_labels))
             
-        except Exception as e:
-            print(f"Error loading model or weights: {e}")
-            return
+        # except Exception as e:
+        #     print(f"Error loading model or weights: {e}")
+        #     return
 
         # Move model to device (use CPU if GPU is not available or out of memory)
         # device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
