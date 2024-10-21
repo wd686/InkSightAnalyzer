@@ -86,8 +86,7 @@ def sentimentExtraction(self, aspectOutput_df):
 
     # Function to convert 'Predicted Labels' column to a list
     def convert_to_list(aspect_string):
-        return ast.literal_eval(aspect_string) if isinstance(aspect_string, str) else []
-
+        return ast.literal_eval(aspect_string) if isinstance(aspect_string, str) else aspect_string
 
     # Applying the function to the DataFrame
     def process_dataframe(df):
