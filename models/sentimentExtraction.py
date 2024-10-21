@@ -146,7 +146,7 @@ def sentimentExtraction(self, aspectOutput_df):
         expanded_df = pd.DataFrame(expanded_rows)
         
         # Filter out rows where 'Predicted Sentiment' is blank or NaN
-        expanded_df = expanded_df[expanded_df['Predicted Sentiment'].notna() & (expanded_df['Predicted Sentiment'] != '')]
+        # expanded_df = expanded_df[expanded_df['Predicted Sentiment'].notna() & (expanded_df['Predicted Sentiment'] != '')] # TODO uncomment?
         
         return expanded_df
 
