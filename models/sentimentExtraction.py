@@ -96,7 +96,7 @@ def sentimentExtraction(self, aspectOutput_df):
 
         # Apply the sentiment extraction function to each row
         df['Sentiment Expressions'] = df.apply(
-        lambda row: extract_sentiment_expression_llama(row['Combined Text'], row['Aspect List']), axis=1
+        lambda row: extract_sentiment_expression_llama(row['Reviews'], row['Aspect List']), axis=1
     )
 
         return df
@@ -152,8 +152,6 @@ def sentimentExtraction(self, aspectOutput_df):
 
 
     aspectSentimentOutput_df = expand_rows_for_aspects(df_new)
-
-
     df = aspectSentimentOutput_df.copy()
     
     ##################################################################################################### 
