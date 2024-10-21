@@ -35,22 +35,22 @@ def sentimentExtraction(self, aspectOutput_df):
 
     # TODO TO COMMENT
 
-    sentiment_list = [
-        "Positive", "Positive", "Negative", "Positive", "Positive", "Positive", "Positive", 
-        "Negative", "Positive", "Negative", "Positive", "Positive", "Positive", "Negative", 
-        "Positive", "Positive", "Negative", "Positive", "Negative", "Positive", "Positive", 
-        "Positive", "Negative", "Positive", "Negative", "Negative", "Positive", "Positive", 
-        "Negative", "Negative", "Negative", "Positive", "Negative", "Negative", "Negative", 
-        "Negative", "Negative", "Negative", "Negative", "Negative", "Negative", "Positive", 
-        "Positive", "Positive", "Negative", "Positive", "Negative", "Positive", "Negative", 
-        "Positive", "Positive", "Positive", "Positive", "Negative", "Negative", "Positive", 
-        "Negative", "Negative", "Negative", "Negative", "Positive", "Positive", "Negative", 
-        "Negative", "Positive", "Positive", "Negative", "Negative", "Negative", "Positive", 
-        "Positive", "Positive", "Negative", "Positive"
-    ]
-    aspectInput_df['Sentiment'] = sentiment_list
-    aspectSentimentOutput_df = aspectInput_df.copy()
-    df = aspectSentimentOutput_df.copy()
+    # sentiment_list = [
+    #     "Positive", "Positive", "Negative", "Positive", "Positive", "Positive", "Positive", 
+    #     "Negative", "Positive", "Negative", "Positive", "Positive", "Positive", "Negative", 
+    #     "Positive", "Positive", "Negative", "Positive", "Negative", "Positive", "Positive", 
+    #     "Positive", "Negative", "Positive", "Negative", "Negative", "Positive", "Positive", 
+    #     "Negative", "Negative", "Negative", "Positive", "Negative", "Negative", "Negative", 
+    #     "Negative", "Negative", "Negative", "Negative", "Negative", "Negative", "Positive", 
+    #     "Positive", "Positive", "Negative", "Positive", "Negative", "Positive", "Negative", 
+    #     "Positive", "Positive", "Positive", "Positive", "Negative", "Negative", "Positive", 
+    #     "Negative", "Negative", "Negative", "Negative", "Positive", "Positive", "Negative", 
+    #     "Negative", "Positive", "Positive", "Negative", "Negative", "Negative", "Positive", 
+    #     "Positive", "Positive", "Negative", "Positive"
+    # ]
+    # aspectInput_df['Sentiment'] = sentiment_list
+    # aspectSentimentOutput_df = aspectInput_df.copy()
+    # df = aspectSentimentOutput_df.copy()
 
 
     #####################################################################################################
