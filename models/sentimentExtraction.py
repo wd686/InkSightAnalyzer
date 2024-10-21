@@ -159,19 +159,29 @@ def sentimentExtraction(self, aspectOutput_df):
 
     # df.drop(columns = ['Sentence', 'Review_ID'], inplace = True)
 
-    # Create a pivot table to count positive and negative sentiments for each aspect
-    df = df.pivot_table(index='Aspect', columns='Predicted Sentiment', aggfunc='size', fill_value=0)
+    # # Create a pivot table to count positive and negative sentiments for each aspect
+    # df = df.pivot_table(index='Aspect', columns='Predicted Sentiment', aggfunc='size', fill_value=0)
 
-    #Add a 'Total' column to get the sum of positive and negative sentiments
-    df['Total'] = df['Positive'] + df['Negative']
+    # #Add a 'Total' column to get the sum of positive and negative sentiments
+    # df['Total'] = df['Positive'] + df['Negative']
 
-     #add two new columns into the table
-    df["Category"] = df.index
+    #  #add two new columns into the table
+    # df["Category"] = df.index
 
-    #represent overall sentiment for the categary based on num of pos/neg
-    df["Sentiment"] = np.round((df["Positive"]-df["Negative"])/
-                                                     (df["Negative"]+df["Positive"]),2)
+    # #represent overall sentiment for the categary based on num of pos/neg
+    # df["Sentiment"] = np.round((df["Positive"]-df["Negative"])/
+    #                                                  (df["Negative"]+df["Positive"]),2)
     
-    overallResultsOutput_df = df.copy()
+    # overallResultsOutput_df = df.copy()
+
+    # TODO TO DELETE!
+    data = {
+        'Positive': [4, 17, 42, 16],
+        'Negative': [54, 14, 3, 25],
+        'Total': [58, 31, 45, 41],
+        'Category': ['Price', 'Customer Service', 'Product Quality', 'Delivery'],
+        'Sentiment': [-0.86, 0.10, 0.87, -0.22]
+    }
+    overallResultsOutput_df = pd.DataFrame(data)
     
     return aspectSentimentOutput_df, overallResultsOutput_df # aspect-sentiment result outputs; aggregated final outputs
