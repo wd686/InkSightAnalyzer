@@ -127,8 +127,8 @@ def aspectClassification(self, rawInput_file):
         {"Review_ID": 46, "Sentence": "far good work 6455 printer", "Aspect": "Product Quality"},
         {"Review_ID": 47, "Sentence": "great support from HP", "Aspect": "Customer Service"},
         {"Review_ID": 48, "Sentence": "Great service fast felivery", "Aspect": "Customer Service"},
-        {"Review_ID": 49, "Sentence": "I just got the ink cartridge today and printed out a few papers.", "Aspect": "Price"},
-        {"Review_ID": 49, "Sentence": "Seems to be going well, it's doing better than the refurbished cartridge I got from Office Depot that's for sure.", "Aspect": "Product Quality"}
+        {"Review_ID": 49, "Sentence": "I just got the ink cartridge today and it was a bit pricy.", "Aspect": "Price"},
+        {"Review_ID": 49, "Sentence": "Printed few papers and it seems to go well, it's doing better than the refurbished cartridge I got from Office Depot that's for sure.", "Aspect": "Product Quality"}
     ]
 
     # Create DataFrame

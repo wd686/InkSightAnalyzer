@@ -1,9 +1,8 @@
 import pandas as pd
 import numpy as np
-# from transformers import pipeline
 import ollama
 import ast
-# import model from hugging face
+from transformers import pipeline
 
 def sentimentAnalyzer(self, aspectInput_df):
 
