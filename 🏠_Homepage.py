@@ -52,7 +52,7 @@ f'''
 **Past Trends**\n
 This section allow users to visualize historical trends obtained from a set of 'printer & ink' related customer surveys.
 
-**Sentiment Classification**\n
+**Sentiment Analyzer**\n
 This section allow users to input new survey data relating to 'printer & ink' and obtain its respective aspects and sentiments on the fly.\
  Additional CSV files can also be downloaded for more ganular details.
 

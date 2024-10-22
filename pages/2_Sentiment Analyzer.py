@@ -16,7 +16,7 @@ nltk.download('wordnet')
 
 # Set page config
 st.set_page_config(
-    page_title='Sentiment Classification', # Set display name of browser tab
+    page_title='Sentiment Analyzer', # Set display name of browser tab
     layout="wide", # "wide" or "centered"
     initial_sidebar_state="expanded"
 )
@@ -55,7 +55,7 @@ try:
 
     modelResults = controllerService()
     aspect_df = modelResults.runAspectClassification(rawInput_df)
-    aspectSentimentOutput_df, overallResultsOutput_df = modelResults.runSentimentExtraction(aspect_df)
+    aspectSentimentOutput_df, overallResultsOutput_df = modelResults.runsentimentAnalyzer(aspect_df)
 
     timePeriod_str = rawInput_df.head(1).reset_index()['Time period'][0]
 

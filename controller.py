@@ -1,5 +1,5 @@
 from models.aspectClassification import aspectClassification
-from models.sentimentExtraction import sentimentExtraction
+from models.sentimentAnalyzer import sentimentAnalyzer
 
 class controllerService:
 
@@ -9,5 +9,5 @@ class controllerService:
     def runAspectClassification(self, rawInput_file):
         return aspectClassification(self, rawInput_file)
 
-    def runSentimentExtraction(self, aspectInput_df):
-        return sentimentExtraction(self, aspectInput_df)
+    def runsentimentAnalyzer(self, aspectInput_df):
+        return sentimentAnalyzer(self, aspectInput_df)
