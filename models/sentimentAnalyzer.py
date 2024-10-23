@@ -108,8 +108,8 @@ def sentimentAnalyzer(self, aspectInput_df):
          # Create a new DataFrame from the expanded rows
          expanded_df = pd.DataFrame(expanded_rows)
         
-         # Filter out rows where 'Sentiment' is empty
-         expanded_df = expanded_df[(expanded_df['Sentiment'].notnull()) | (expanded_df['Sentiment'] != '')]
+        #  # Filter out rows where 'Sentiment' is empty
+        #  expanded_df = expanded_df[(expanded_df['Sentiment'].notnull()) | (expanded_df['Sentiment'] != '')]
         
          return expanded_df
 
