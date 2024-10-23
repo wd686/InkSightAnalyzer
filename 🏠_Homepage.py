@@ -19,7 +19,6 @@ custom_styles = """
         padding-bottom: 1rem;
     }
 
-
 </style>
 """
 # Display CSS styles using st.markdown
