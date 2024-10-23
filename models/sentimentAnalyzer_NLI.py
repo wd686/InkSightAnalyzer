@@ -7,17 +7,18 @@ def sentimentAnalyzer(self, aspectInput_df, aspectSentimentOutput_df):
     df = aspectInput_df.copy()
 
 
-    def extract_sentiment_expression_nli(review, aspects, model_name='facebook/bart-large-mnli'):
-        # Check if GPU is available
-        device = 0 if torch.cuda.is_available() else -1
-
-        # Load NLI model and tokenizer
+    def initialize_nli_model(model_name='MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli'):
+        device = 0 if torch.cuda.is_available() else -1  # Check if GPU is available
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         model = AutoModelForSequenceClassification.from_pretrained(model_name).to(device)
         
         # Create a pipeline for NLI, specifying the device
         nli_pipeline = pipeline("zero-shot-classification", model=model, tokenizer=tokenizer, device=device)
+        
+        return nli_pipeline, device
 
+    # Function to extract sentiment expressions
+    def extract_sentiment_expression_nli(review, aspects, nli_pipeline):
         # Define possible labels for sentiment
         candidate_labels = ['positive', 'negative']
 
@@ -54,7 +55,7 @@ def sentimentAnalyzer(self, aspectInput_df, aspectSentimentOutput_df):
 
         # Apply the sentiment extraction function to each row
          df['Sentiment Expressions'] = df.apply(
-            lambda row: extract_sentiment_expression_nli(row['Combined Text'], row['Aspect List']), axis=1
+            lambda row: extract_sentiment_expression_nli(row['Combined Text'], row['Aspect List']), nli_pipeline, axis=1
         )
          
     return df
