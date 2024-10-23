@@ -1,4 +1,4 @@
-<img src="https://github.com/wd686/InkSightAnalyzer/blob/main/images/group_logo.jpg" width="470" height="170">
+<img src="https://github.com/wd686/InkSightAnalyzer/blob/main/images/group_logo.jpg" width="300" height="170">
 
 # Background
 In today's fiercely competitive landscape of mobile applications, specialists within the industry are confronted with the perpetual challenge of deciphering evolving user preferences amidst a vast sea of options. With a combined total of approximately 7.5 million apps available across the Google and Apple app stores as of 2022, the task of standing out becomes increasingly daunting. 
