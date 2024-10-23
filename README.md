@@ -34,7 +34,7 @@ The folders in this repository are described as follows:
 
 # References
 1. [Hugging Face fine-tuned models](https://huggingface.co/nusebacra)
-2. [Distilbert documentation](https://huggingface.co/docs/transformers/en/model_doc/distilbert))
+2. [Distilbert documentation](https://huggingface.co/docs/transformers/en/model_doc/distilbert)
 3. [Facebook-BART NLI documentation](https://huggingface.co/facebook/bart-large-mnli)
 4. [Libraries used](https://github.com/wd686/InkSightAnalyzer/blob/main/requirements.txt)
 5. [Streamlit 'download CSV button' guide](https://www.youtube.com/watch?v=eJWHFJSjD9E)
