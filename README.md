@@ -8,8 +8,7 @@ To continuously improve its offerings, HP actively gathers customer feedback thr
 In this project, the team will be undertaking an in-depth analysis of customer sentiment related to HP’s printers and ink cartridges through Aspect Based Sentiment Analysis (ABSA) modelling.
 
 # Directory
-
-Please refer to this [link](https://github.com/wd686/InkSightAnalyzer/blob/main/Project Summary.pdf) for a high-level summary of the project.
+Please refer to this [link](https://github.com/wd686/InkSightAnalyzer/blob/main/Project%20Summary.pdf) for a high-level summary of the project.
 
 The folders in this repository are described as follows:
 
