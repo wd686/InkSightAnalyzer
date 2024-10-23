@@ -12,7 +12,8 @@ def sentimentAnalyzer(self, aspectInput_df):
 
 
     def initialize_nli_model(model_name=chosenModel):
-        device = 0 if torch.cuda.is_available() else -1  # Check if GPU is available
+        # device = 0 if torch.cuda.is_available() else -1  # Check if GPU is available
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         model = AutoModelForSequenceClassification.from_pretrained(model_name).to(device)
         
