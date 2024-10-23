@@ -5,13 +5,13 @@ import matplotlib.pyplot as plt
 
 # hard-coded variables
 # df = pd.read_excel('dataSource/Combined Survey+Web review.xlsx')
-startEndPeriods_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/startEndPeriods.csv')
-reviewSource_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/reviewSource.csv')
-inkSupply_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/inkSupply.csv')
-printer_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/printer.csv')
-supplies_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/supplies.csv')
-ageGender_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/ageGender.csv')
-sentimentTime_df = pd.read_csv('Sandbox/streamlitProcessing/generatedCSVs/sentimentTime.csv')
+startEndPeriods_df = pd.read_csv('sandbox/streamlitProcessing/generatedCSVs/startEndPeriods.csv')
+reviewSource_df = pd.read_csv('sandbox/streamlitProcessing/generatedCSVs/reviewSource.csv')
+inkSupply_df = pd.read_csv('sandbox/streamlitProcessing/generatedCSVs/inkSupply.csv')
+printer_df = pd.read_csv('sandbox/streamlitProcessing/generatedCSVs/printer.csv')
+supplies_df = pd.read_csv('sandbox/streamlitProcessing/generatedCSVs/supplies.csv')
+ageGender_df = pd.read_csv('sandbox/streamlitProcessing/generatedCSVs/ageGender.csv')
+sentimentTime_df = pd.read_csv('sandbox/streamlitProcessing/generatedCSVs/sentimentTime.csv')
 
 # Set page config
 st.set_page_config(
