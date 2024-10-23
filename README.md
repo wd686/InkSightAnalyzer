@@ -33,7 +33,7 @@ The folders in this repository are described as follows:
 5. Michael Wong Wai Kit
 
 # References
-1. [Hugging Face fine-tuned models]([https://github.com/gauthamp10/apple-appstore-apps](https://huggingface.co/nusebacra))
+1. [Hugging Face fine-tuned models]([https://github.com/gauthamp10/apple-appstore-apps](https://huggingface.co/nusebacra)
 2. [Distilbert documentation](https://huggingface.co/docs/transformers/en/model_doc/distilbert))
 3. [Facebook-BART NLI documentation](https://huggingface.co/facebook/bart-large-mnli)
 4. [Libraries used](https://github.com/wd686/InkSightAnalyzer/blob/main/requirements.txt)
