@@ -1,15 +1,15 @@
 <img src="https://github.com/wd686/InkSightAnalyzer/blob/main/images/group_logo.jpg" width="170" height="170">
 
 # Background
-In today's fiercely competitive landscape of mobile applications, specialists within the industry are confronted with the perpetual challenge of deciphering evolving user preferences amidst a vast sea of options. With a combined total of approximately 7.5 million apps available across the Google and Apple app stores as of 2022, the task of standing out becomes increasingly daunting. 
+HP Inc, a global leader in printing solutions, is committed to deliver high quality products, services and customer experiences. One of the key components of HP’s printing trabusiness is its ink cartridges, an integral part to the performance of its printers. Ensuring customers’ satisfaction with the products is crucial to maintaining HP’s market leadership and brand loyalty.
 
-The pressure to craft engaging experiences is further intensified by the staggering volume of app downloads, which soared to an estimated 37 billion in the first quarter of 2022 alone. Recognizing the immense potential and significance of analyzing such vast troves of app data, our team is committed to leveraging these insights to inform crucial business decisions throughout the development and deployment phases of an application. 
+To continuously improve its offerings, HP actively gathers customer feedback through multiple channels, including social media, online reviews, and customer surveys.  The feedback often includes valuable insights but also contains a mix of positive, negative and neutral sentiments. The key challenge is to systematically analyze and interpret the vast amount of data from the different review sources such as Amazon, Walmart and Office Depot. 
 
-In this project, we delve into the methodologies and findings derived from our comprehensive analysis of big app data, aiming to uncover actionable insights that can drive strategic direction and foster innovation within the mobile app industry. 
+In this project, the team will be undertaking an in-depth analysis of customer sentiment related to HP’s printers and ink cartridges through Aspect Based Sentiment Analysis (ABSA) modelling.
 
 # Directory
 
-Please refer to this [link](https://github.com/Michaelwwk/appStoreAnalytics/blob/main/projectSummary.pdf) for a high-level summary of the project.
+Please refer to this [link](https://github.com/wd686/InkSightAnalyzer/blob/main/Project Summary.pdf) for a high-level summary of the project.
 
 The folders in this repository are described as follows:
 
