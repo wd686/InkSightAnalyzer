@@ -20,7 +20,7 @@ The folders in this repository are described as follows:
   - Models chosen for production (DistilBERT for multi-aspects classification & Facebook-BART NLI for sentiment analysis).
 - Streamlit Pages (pages)
   - Codes for generating Streamlit webpage.
-- Sandbox
+- Sandbox Exploration (sandbox)
   - Stash of all draft codes and output files (EDA/ Data Processing, model training, streamlit processing).
 
  The codes in this repository are used for deployment on [Streamlit](https://inksightanalyzer.streamlit.app/). Please refer to the webpage for more information and usage instructions.
