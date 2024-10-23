@@ -54,19 +54,21 @@ def sentimentAnalyzer(self, aspectInput_df):
          return ast.literal_eval(aspect_string) if isinstance(aspect_string, str) else aspect_string
 
     # Applying the function to the DataFrame
-    def process_dataframe(df):
+    def process_dataframe(df, nli_pipeline):
         # Create a new column for the list of aspects
         df['Aspect List'] = df['Predicted Labels'].apply(convert_to_list)
 
-        nli_pipeline, device = initialize_nli_model(chosenModel)
-
-        # Apply the sentiment extraction function to each row
-        df['Sentiment Expressions'] = df.apply(lambda row: extract_sentiment_expression_nli(row['Reviews'], row['Aspect List']), nli_pipeline, axis=1)
-         
+        # Apply the sentiment extraction function to each row, passing nli_pipeline
+        df['Sentiment Expressions'] = df.apply(lambda row: extract_sentiment_expression_nli(row['Reviews'], row['Aspect List'], nli_pipeline), axis=1)
+        
         return df
 
-    # Apply to df
-    df_new = process_dataframe(df)
+    # Initialize the model and process the dataframe
+    nli_pipeline, device = initialize_nli_model(chosenModel)
+    df_new = process_dataframe(df, nli_pipeline)
+
+    # # Apply to df
+    # df_new = process_dataframe(df)
 
     # Function to process the sentiment expression and assign the label
     def process_sentiment_label(sentiment):
