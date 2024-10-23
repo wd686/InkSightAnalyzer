@@ -17,7 +17,7 @@ The folders in this repository are described as follows:
 - Images (images)
   - Contains the group logo.
 - Deployed Models (models)
-  - Models that are chosen for production (distilBERT for multi-aspects classification & Facebook-BART NLI for sentiment analysis).
+  - Models that are chosen for production (DistilBERT for multi-aspects classification & Facebook-BART NLI for sentiment analysis).
 - Streamlit Pages (pages)
   - Codes for generating Streamlit webpage.
 - Sandbox
@@ -34,7 +34,7 @@ The folders in this repository are described as follows:
 
 # References
 1. [Hugging Face fine-tuned models](https://huggingface.co/nusebacra)
-2. [Distilbert documentation](https://huggingface.co/docs/transformers/en/model_doc/distilbert)
+2. [DistilBERT documentation](https://huggingface.co/docs/transformers/en/model_doc/distilbert)
 3. [Facebook-BART NLI documentation](https://huggingface.co/facebook/bart-large-mnli)
 4. [Libraries used](https://github.com/wd686/InkSightAnalyzer/blob/main/requirements.txt)
 5. [Streamlit 'download CSV button' guide](https://www.youtube.com/watch?v=eJWHFJSjD9E)
