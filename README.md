@@ -12,32 +12,30 @@ Please refer to this [link](https://github.com/wd686/InkSightAnalyzer/blob/main/
 
 The folders in this repository are described as follows:
 
-- Workflows (.github/workflows)
-  - This folder include all .yml files which interacts with GitHub Actions to activate the respective workflows.
-- Data Sources (dataSources)
-  - Data sources are obtained from point 1 & 2 in the reference list below.
-- Data Wrangling (dataWrangling)
-  - Scripts in this folder carried out steps such as data cleaning (e.g. null values and non-English words removal), data prepatory work for text analytics, and exploratory data analysis.
-- Data Modelling (models)
-  - Analytical techniques explored includes Decision Tree, Random Forest, and Content-Based Recommender System.
+- Data Sources (dataSource)
+  - Data source used for the project.
 - Images (images)
-  - Contains Apple App Store, Google Play Store, and our group logos.
- 
+  - Contains the group logo.
+- Deployed Models (models)
+  - Champion models that are chosen for production (distilBERT for multi-aspects classification & Facebook-BART NLI for sentiment analysis).
+- Streamlit Pages (pages)
+  - Codes for generating Streamlit webpage.
+- Sandbox
+  - Stash of all draft codes and output files (EDA/ Data Processing, model training, streamlit processing).
+
+ The codes in this repository are used for deployment on [Streamlit](https://inksightanalyzer.streamlit.app/). Please refer to the webpage for more information and usage instructions.
+
 # Contributors
 1. Ang Mei Chi
-2. Lee Kuan Teng Roy
-3. Liu Wudi
-4. Michael Wong Wai Kit
-5. Ong Wee Yang
+2. Darius Chan Yak Weng
+3. Lee Kuan Teng Roy
+4. Liu Wudi
+5. Michael Wong Wai Kit
 
 # References
-1. [Application ID list for Apple App Store](https://github.com/gauthamp10/apple-appstore-apps)
-2. [Application ID list for Google Play Store](https://github.com/gauthamp10/Google_Play_App_Info)
-4. [Web Scrapping Codes for Apple App Store Reviews](https://github.com/glennfang/apple-app-reviews-scraper/blob/main/src/apple_app_reviews_scraper.py)
-5. [Google Play Store API guide](https://pypi.org/project/google-play-scraper)
-8. [Running Python on GitHub Actions](https://www.python-engineer.com/posts/run-python-github-actions)
-
-
-###
-The codes in this repository are used for deployment on Streamlit (link). Please refer to the webpage for more information and usage instructions.
-###
+1. [Hugging Face fine-tuned models]([https://github.com/gauthamp10/apple-appstore-apps](https://huggingface.co/nusebacra))
+2. [Distilbert documentation](https://huggingface.co/docs/transformers/en/model_doc/distilbert))
+3. [Facebook-BART NLI documentation](https://huggingface.co/facebook/bart-large-mnli)
+4. [Libraries used](https://github.com/wd686/InkSightAnalyzer/blob/main/requirements.txt)
+5. [Streamlit 'download CSV button' guide](https://www.youtube.com/watch?v=eJWHFJSjD9E)
+6. [Streamlit 'upload CSV button' guide](https://www.youtube.com/watch?v=i3Ad3-Z-zbY)
