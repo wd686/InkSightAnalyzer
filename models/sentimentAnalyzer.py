@@ -109,7 +109,7 @@ def sentimentAnalyzer(self, aspectInput_df):
          expanded_df = pd.DataFrame(expanded_rows)
         
          # Filter out rows where 'Predicted Sentiment' is blank or NaN
-         expanded_df = expanded_df[expanded_df['Sentiment'].notna() | (expanded_df['Sentiment'] != '')]
+         expanded_df = expanded_df[(expanded_df['Sentiment'].notna()) | (expanded_df['Sentiment'] != '')]
         
          return expanded_df
 
