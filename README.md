@@ -17,7 +17,7 @@ The folders in this repository are described as follows:
 - Images (images)
   - Contains the group logo.
 - Deployed Models (models)
-  - Models that are chosen for production (DistilBERT for multi-aspects classification & Facebook-BART NLI for sentiment analysis).
+  - Models chosen for production (DistilBERT for multi-aspects classification & Facebook-BART NLI for sentiment analysis).
 - Streamlit Pages (pages)
   - Codes for generating Streamlit webpage.
 - Sandbox
@@ -33,9 +33,9 @@ The folders in this repository are described as follows:
 5. Michael Wong Wai Kit
 
 # References
-1. [Hugging Face fine-tuned models](https://huggingface.co/nusebacra)
-2. [DistilBERT documentation](https://huggingface.co/docs/transformers/en/model_doc/distilbert)
-3. [Facebook-BART NLI documentation](https://huggingface.co/facebook/bart-large-mnli)
-4. [Libraries used](https://github.com/wd686/InkSightAnalyzer/blob/main/requirements.txt)
+1. [Libraries used](https://github.com/wd686/InkSightAnalyzer/blob/main/requirements.txt)
+2. [Hugging Face fine-tuned models](https://huggingface.co/nusebacra)
+3. [DistilBERT documentation](https://huggingface.co/docs/transformers/en/model_doc/distilbert)
+4. [Facebook-BART NLI documentation](https://huggingface.co/facebook/bart-large-mnli)
 5. [Streamlit 'download CSV button' guide](https://www.youtube.com/watch?v=eJWHFJSjD9E)
 6. [Streamlit 'upload CSV button' guide](https://www.youtube.com/watch?v=i3Ad3-Z-zbY)
