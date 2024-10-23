@@ -4,7 +4,7 @@ import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 import ast
 
-def sentimentAnalyzer(self, aspectInput_df, aspectSentimentOutput_df):
+def sentimentAnalyzer(self, aspectInput_df):
 
     chosenModel = 'MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli'
 
