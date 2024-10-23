@@ -1,13 +1,16 @@
+import pandas as pd
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 import ast
 
 def sentimentAnalyzer(self, aspectInput_df, aspectSentimentOutput_df):
 
+    chosenModel = 'MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli'
+
     df = aspectInput_df.copy()
 
 
-    def initialize_nli_model(model_name='MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli'):
+    def initialize_nli_model(model_name=chosenModel):
         device = 0 if torch.cuda.is_available() else -1  # Check if GPU is available
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         model = AutoModelForSequenceClassification.from_pretrained(model_name).to(device)
@@ -47,24 +50,22 @@ def sentimentAnalyzer(self, aspectInput_df, aspectSentimentOutput_df):
     def convert_to_list(aspect_string):
          return ast.literal_eval(aspect_string) if isinstance(aspect_string, str) else aspect_string
 
-
     # Applying the function to the DataFrame
     def process_dataframe(df):
-         # Create a new column for the list of aspects
-         df['Aspect List'] = df['Predicted Labels'].apply(convert_to_list)
+        # Create a new column for the list of aspects
+        df['Aspect List'] = df['Predicted Labels'].apply(convert_to_list)
+
+        nli_pipeline, device = initialize_nli_model(chosenModel)
 
         # Apply the sentiment extraction function to each row
-         df['Sentiment Expressions'] = df.apply(
-            lambda row: extract_sentiment_expression_nli(row['Combined Text'], row['Aspect List']), nli_pipeline, axis=1
+        df['Sentiment Expressions'] = df.apply(
+            lambda row: extract_sentiment_expression_nli(row['Reviews'], row['Aspect List']), nli_pipeline, axis=1
         )
          
-    return df
-###### Need to change the column name to 'Reviews' is it mic?
-
+        return df
 
     # Apply to df
     df_new = process_dataframe(df)
-
 
     # Function to process the sentiment expression and assign the label
     def process_sentiment_label(sentiment):
@@ -113,7 +114,6 @@ def sentimentAnalyzer(self, aspectInput_df, aspectSentimentOutput_df):
 
     aspectSentimentOutput_df = expand_rows_for_aspects(df_new)
     df = aspectSentimentOutput_df.copy()
-    
     
     ##################################################################################################### 
     # Transfrom df
