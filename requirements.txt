@@ -29,5 +29,5 @@ squarify
 nltk
 wordcloud
 transformers>=4.0.0
-torch>=1.9.0    # If you're using PyTorch backend
+torch>=1.9.0
 tensorflow>=2.6.0 
