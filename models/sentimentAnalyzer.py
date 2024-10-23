@@ -6,7 +6,7 @@ import ast
 
 def sentimentAnalyzer(self, aspectInput_df):
 
-    chosenModel = 'MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli'
+    chosenModel = 'facebook/bart-large-mnli' # 'facebook/bart-large-mnli' # MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli
 
     df = aspectInput_df.copy()
 
