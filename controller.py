@@ -9,5 +9,5 @@ class controllerService:
     def runAspectClassification(self, rawInput_file):
         return aspectClassification(self, rawInput_file)
 
-    def runsentimentAnalyzer(self, aspectInput_df):
-        return sentimentAnalyzer(self, aspectInput_df)
+    def runsentimentAnalyzer(self, aspectSentimentOutput_df):
+        return sentimentAnalyzer(self, aspectSentimentOutput_df)
