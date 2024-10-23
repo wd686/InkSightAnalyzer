@@ -17,7 +17,7 @@ The folders in this repository are described as follows:
 - Images (images)
   - Contains the group logo.
 - Deployed Models (models)
-  - Champion models that are chosen for production (distilBERT for multi-aspects classification & Facebook-BART NLI for sentiment analysis).
+  - Models that are chosen for production (distilBERT for multi-aspects classification & Facebook-BART NLI for sentiment analysis).
 - Streamlit Pages (pages)
   - Codes for generating Streamlit webpage.
 - Sandbox
