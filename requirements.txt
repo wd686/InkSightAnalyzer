@@ -28,6 +28,6 @@ torchaudio==2.2.2
 squarify
 nltk
 wordcloud
-transformers
+transformers>=4.0.0
 torch>=1.9.0    # If you're using PyTorch backend
 tensorflow>=2.6.0 
