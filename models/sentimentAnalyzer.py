@@ -60,9 +60,7 @@ def sentimentAnalyzer(self, aspectInput_df):
         nli_pipeline, device = initialize_nli_model(chosenModel)
 
         # Apply the sentiment extraction function to each row
-        df['Sentiment Expressions'] = df.apply(
-            lambda row: extract_sentiment_expression_nli(row['Reviews'], row['Aspect List']), nli_pipeline, axis=1
-        )
+        df['Sentiment Expressions'] = df.apply(lambda row: extract_sentiment_expression_nli(row['Reviews'], row['Aspect List']), nli_pipeline, axis=1)
          
         return df
 
@@ -112,7 +110,6 @@ def sentimentAnalyzer(self, aspectInput_df):
          # expanded_df = expanded_df[expanded_df['Predicted Sentiment'].notna() & (expanded_df['Predicted Sentiment'] != '')] # TODO uncomment?
         
          return expanded_df
-
 
     aspectSentimentOutput_df = expand_rows_for_aspects(df_new)
     df = aspectSentimentOutput_df.copy()
