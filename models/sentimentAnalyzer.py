@@ -65,10 +65,9 @@ def sentimentAnalyzer(self, aspectInput_df):
 
     # Initialize the model and process the dataframe
     nli_pipeline, device = initialize_nli_model(chosenModel)
+    
+    # Apply to df
     df_new = process_dataframe(df, nli_pipeline)
-
-    # # Apply to df
-    # df_new = process_dataframe(df)
 
     # Function to process the sentiment expression and assign the label
     def process_sentiment_label(sentiment):
@@ -120,23 +119,23 @@ def sentimentAnalyzer(self, aspectInput_df):
     #################################################################################################### 
     # Transfrom df
 
-    df.drop(columns = ['Sentence', 'Review_ID'], inplace = True)
+    # df.drop(columns = ['Sentence', 'Review_ID'], inplace = True)
 
-    # Create a pivot table to count positive and negative sentiments for each aspect
-    df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
-    # df = df.pivot_table(index='Aspect', columns='Predicted Sentiment', aggfunc='size', fill_value=0)
+    # # Create a pivot table to count positive and negative sentiments for each aspect
+    # df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
+    # # df = df.pivot_table(index='Aspect', columns='Predicted Sentiment', aggfunc='size', fill_value=0)
 
-    #Add a 'Total' column to get the sum of positive and negative sentiments
-    df['Total'] = df['Positive'] + df['Negative']
+    # #Add a 'Total' column to get the sum of positive and negative sentiments
+    # df['Total'] = df['Positive'] + df['Negative']
 
-     #add two new columns into the table
-    df["Category"] = df.index
+    #  #add two new columns into the table
+    # df["Category"] = df.index
 
-    #represent overall sentiment for the categary based on num of pos/neg
-    df["Sentiment"] = np.round((df["Positive"]-df["Negative"])/
-                                                     (df["Negative"]+df["Positive"]),2)
+    # #represent overall sentiment for the categary based on num of pos/neg
+    # df["Sentiment"] = np.round((df["Positive"]-df["Negative"])/
+    #                                                  (df["Negative"]+df["Positive"]),2)
     
-    overallResultsOutput_df = df.copy()
+    # overallResultsOutput_df = df.copy()
 
     # # TODO TO DELETE!
     data = {
