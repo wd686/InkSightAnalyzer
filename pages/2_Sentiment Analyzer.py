@@ -155,17 +155,17 @@ try:
 
             st.write("The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)")
 
-    if not overallResultsOutput_df.empty:
+    # if not overallResultsOutput_df.empty:
 
-        st.download_button("Download Aspect-Sentiment Output CSV file",
-                        aspectSentimentOutput_df.to_csv(index = False),
-                        file_name = 'aspectSentimentOutput_file.csv',
-                        mime = 'text/csv')
-        
-        st.download_button("Download Overall Results Output CSV file",
-                        overallResultsOutput_df.to_csv(index = False),
-                        file_name = 'overallResultsOutput_file.csv',
-                        mime = 'text/csv')
+    st.download_button("Download Aspect-Sentiment Output CSV file",
+                    aspectSentimentOutput_df.to_csv(index = False),
+                    file_name = 'aspectSentimentOutput_file.csv',
+                    mime = 'text/csv')
+    
+    st.download_button("Download Overall Results Output CSV file",
+                    overallResultsOutput_df.to_csv(index = False),
+                    file_name = 'overallResultsOutput_file.csv',
+                    mime = 'text/csv')
 
 except ValueError:
     pass
