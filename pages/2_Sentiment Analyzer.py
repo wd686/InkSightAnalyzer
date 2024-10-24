@@ -61,8 +61,12 @@ try:
 
     st.subheader('Results')
     st.write(f"Time period: *{timePeriod_str}*")
+    if overallResultsOutput_df.empty:
+            st.write('There are neither Positive nor Negative reviews.')
 
-    def wordCloud(rawInput_df, width = 12, height = 8):
+    col1, col2 = st.columns([1,1])
+
+    with col1:
 
         def preprocess_text(tokens):
 
@@ -98,39 +102,19 @@ try:
         # Generate the word cloud
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_reviews)
 
-         # Calculate a title font size proportionate to the figure size
-        titleSize = min(width * 3, 20)
-
         # Plot the word cloud using Streamlit
         st.set_option('deprecation.showPyplotGlobalUse', False)
-        fig, ax = plt.subplots(figsize=(width, height))  # Adjusting figure size to control plot size
-        ax.imshow(wordcloud, interpolation='bilinear')
-        ax.axis("off")
-        
-        # Add the title without affecting the word cloud size
-        plt.suptitle("Word Cloud of Reviews", fontsize=titleSize, fontweight='bold')
-        
-        # Use `tight_layout` to ensure the title doesn't overlap with the plot
-        plt.tight_layout(rect=[0, 0, 1, 0.95])  # Adjust the rect to fit the title properly
-
-        # # Plot the word cloud using Streamlit
-        # st.set_option('deprecation.showPyplotGlobalUse', False)
-        # plt.figure(figsize=(width, height))
-        # plt.suptitle("Word Cloud of Reviews", fontsize=titleSize, fontweight='bold') # Main title
-        # plt.imshow(wordcloud, interpolation='bilinear')
-        # plt.axis("off")
+        plt.figure(figsize=(12, 8))
+        plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold') # Main title
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis("off")
 
         # Display the word cloud in Streamlit
         st.pyplot(plt)
+        
+    with col2:
 
-    if not overallResultsOutput_df.empty:
-        col1, col2 = st.columns([1,1])
-
-        with col1:
-
-            wordCloud(rawInput_df)
-
-        with col2:
+        if not overallResultsOutput_df.empty:
 
             # Tree Map
 
@@ -165,10 +149,6 @@ try:
             st.pyplot(fig)
 
             st.write("The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)")
-
-    else:
-        st.write('There are neither Positive nor Negative reviews.')
-        wordCloud(rawInput_df, 12, 8)
 
     st.download_button("Download Aspect-Sentiment Output CSV file",
                     aspectSentimentOutput_df.to_csv(index = False),
