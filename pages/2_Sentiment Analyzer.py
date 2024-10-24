@@ -180,7 +180,8 @@ try:
     else:
         st.write("Uploaded CSV file does not contain the required columns. Please label the columns as 'Time period' and 'Reviews'.")
 
-except ValueError:
-    pass
-except pd.errors.ParserError:
-    st.write('Uploaded file is not in CSV format. Please try again.')
+except (ValueError, pd.errors.ParserError) as e:
+    if isinstance(e, pd.errors.ParserError):
+        st.write('Uploaded file is not in CSV format. Please try again.')
+    else:
+        pass
