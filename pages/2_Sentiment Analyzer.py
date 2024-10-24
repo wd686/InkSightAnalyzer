@@ -102,15 +102,20 @@ try:
         # Generate the word cloud
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_reviews)
 
-        # Plot the word cloud using Streamlit
-        st.set_option('deprecation.showPyplotGlobalUse', False)
-        plt.figure(figsize=(12, 8))
-        plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold') # Main title
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis("off")
+        if not all_reviews.empty:
 
-        # Display the word cloud in Streamlit
-        st.pyplot(plt)
+            # Plot the word cloud using Streamlit
+            st.set_option('deprecation.showPyplotGlobalUse', False)
+            plt.figure(figsize=(12, 8))
+            plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold') # Main title
+            plt.imshow(wordcloud, interpolation='bilinear')
+            plt.axis("off")
+
+            # Display the word cloud in Streamlit
+            st.pyplot(plt)
+        
+        else:
+             st.write('Reviews do not meet requirements for Word Cloud generation.')
         
     with col2:
 
