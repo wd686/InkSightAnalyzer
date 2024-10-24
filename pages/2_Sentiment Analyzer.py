@@ -100,7 +100,7 @@ try:
 
         # Plot the word cloud using Streamlit
         st.set_option('deprecation.showPyplotGlobalUse', False)
-        plt.figure(figsize=(12, 8))
+        plt.figure(figsize=(3, 2)) # TODO 12, 8
         plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold') # Main title
         plt.imshow(wordcloud, interpolation='bilinear')
         plt.axis("off")
