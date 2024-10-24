@@ -60,7 +60,7 @@ try:
     
     # Check if the required columns are present
     if {'Time period', 'Reviews'}.issubset(rawInput_df.columns):
-        if rawInput_df[['Time period', 'Reviews']].empty:
+        if rawInput_df['Time period'].isnull().all() or rawInput_df['Reviews'].isnull().all():
             st.write("The uploaded CSV file is empty. Please provide data.")
         else:
             # Process the DataFrame as needed
