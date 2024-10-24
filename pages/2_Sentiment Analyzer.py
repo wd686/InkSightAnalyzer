@@ -154,6 +154,8 @@ try:
             st.pyplot(fig)
 
             st.write("The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)")
+        else:
+             pass
 
     if not overallResultsOutput_df.empty:
 
