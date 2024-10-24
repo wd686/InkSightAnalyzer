@@ -62,11 +62,7 @@ try:
     st.subheader('Results')
     st.write(f"Time period: *{timePeriod_str}*")
 
-    col1, col2 = st.columns([1,1])
-
-    with col1:
-
-        # Word-cloud
+    def wordCloud(rawInput_df):
 
         def preprocess_text(tokens):
 
@@ -103,7 +99,7 @@ try:
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_reviews)
 
         # Plot the word cloud using Streamlit
-        st.set_option('deprecation.showPyplotGlobalUse', False)  # Optional: To suppress warnings
+        st.set_option('deprecation.showPyplotGlobalUse', False)
         plt.figure(figsize=(12, 8))
         plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold') # Main title
         plt.imshow(wordcloud, interpolation='bilinear')
@@ -111,6 +107,12 @@ try:
 
         # Display the word cloud in Streamlit
         st.pyplot(plt)
+
+    col1, col2 = st.columns([1,1])
+
+    with col1:
+
+        wordCloud(rawInput_df)
         
     with col2:
 
