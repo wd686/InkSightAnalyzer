@@ -153,7 +153,7 @@ def sentimentAnalyzer(self, aspectInput_df):
         df['Total'] = df['Positive'] + df['Negative']
         # Represent overall sentiment for the category based on no. of 'Positive'/'Negative'
         df["Sentiment"] = np.round((df["Positive"] - df["Negative"]) / (df["Positive"] + df["Negative"]), 2)
-    except KeyError:
+    except:
         # Handle cases where 'Negative' or 'Positive' columns are missing
         if 'Positive' in df.columns and 'Negative' not in df.columns:
             df['Total'] = df['Positive']
