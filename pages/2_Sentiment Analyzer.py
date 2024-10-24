@@ -62,10 +62,10 @@ try:
     if {'Time period', 'Reviews'}.issubset(rawInput_df.columns):
         if rawInput_df[['Time period', 'Reviews']].empty:
             st.write("The uploaded CSV file is empty. Please provide data.")
-        if rawInput_df['Time period'].isnull().all():
-            st.write("The 'Time period' column is empty. Please provide data.")
-        if rawInput_df['Reviews'].isnull().all():
-            st.write("The 'Reviews' column is empty. Please provide data.")
+        elif rawInput_df['Time period'].isnull().all():
+                st.write("The 'Time period' column is empty. Please provide data.")
+        elif rawInput_df['Reviews'].isnull().all():
+                st.write("The 'Reviews' column is empty. Please provide data.")
         else:
             # Process the DataFrame as needed
             st.write("Data loaded successfully.")
