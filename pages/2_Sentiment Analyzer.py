@@ -99,7 +99,7 @@ try:
         # Combine all reviews into a single string for word cloud
         all_reviews = ' '.join(rawInput_df['Processed_Reviews'])
         
-        if not all_reviews.empty:
+        if all_reviews != '':
 
             # Generate the word cloud
             wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_reviews)
