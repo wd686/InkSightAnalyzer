@@ -118,8 +118,10 @@ try:
              st.write('Reviews do not meet requirements for Word Cloud generation.')
         
     with col2:
+         
+        pass
 
-        if not overallResultsOutput_df.empty:
+        # if not overallResultsOutput_df.empty:
 
             # # Tree Map
 
