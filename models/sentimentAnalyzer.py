@@ -180,6 +180,6 @@ def sentimentAnalyzer(self, aspectInput_df):
     if 'Sentiment' in df.columns:
         overallResultsOutput_df = df.copy()
     else:
-      df = pd.DataFrame()  
+      overallResultsOutput_df = pd.DataFrame()  
     
     return aspectSentimentOutput_df, overallResultsOutput_df # aspect-sentiment result outputs; aggregated final outputs
