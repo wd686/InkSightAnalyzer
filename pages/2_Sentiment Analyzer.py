@@ -114,39 +114,44 @@ try:
         
     with col2:
 
-        # Tree Map
+        if not overallResultsOutput_df.empty:
 
-        # Normalize sentiment values and apply colors
-        norm = matplotlib.colors.Normalize(vmin=min(overallResultsOutput_df.Sentiment), vmax=max(overallResultsOutput_df.Sentiment))
-        colors = [matplotlib.cm.Reds_r(norm(value)) for value in overallResultsOutput_df.Sentiment]
-        # # Create a colormap from red to green
-        # cmap = plt.get_cmap('RdYlGn')  # Use a diverging color map (Red to Yellow to Green)
-        # colors = [cmap(norm(value)) for value in overallResultsOutput_df.Sentiment]
+            # Tree Map
 
-        # Create figure and size
-        fig, ax = plt.subplots()
-        fig.set_size_inches(12, 8)
+            # Normalize sentiment values and apply colors
+            norm = matplotlib.colors.Normalize(vmin=min(overallResultsOutput_df.Sentiment), vmax=max(overallResultsOutput_df.Sentiment))
+            colors = [matplotlib.cm.Reds_r(norm(value)) for value in overallResultsOutput_df.Sentiment]
+            # # Create a colormap from red to green
+            # cmap = plt.get_cmap('RdYlGn')  # Use a diverging color map (Red to Yellow to Green)
+            # colors = [cmap(norm(value)) for value in overallResultsOutput_df.Sentiment]
 
-        # Create squarify plot
-        squarify.plot(
-            label=overallResultsOutput_df.Category,
-            sizes=overallResultsOutput_df.Total,
-            value=overallResultsOutput_df.Sentiment,
-            color=colors,
-            alpha=.6,
-            pad=True
-        )
+            # Create figure and size
+            fig, ax = plt.subplots()
+            fig.set_size_inches(12, 8)
 
-        # Add title
-        plt.suptitle("Sentiment Heat Map of Printer & Ink Aspects", fontsize=20, fontweight="bold")  # Main title
+            # Create squarify plot
+            squarify.plot(
+                label=overallResultsOutput_df.Category,
+                sizes=overallResultsOutput_df.Total,
+                value=overallResultsOutput_df.Sentiment,
+                color=colors,
+                alpha=.6,
+                pad=True
+            )
 
-        # Remove axes
-        plt.axis('off')
+            # Add title
+            plt.suptitle("Sentiment Heat Map of Printer & Ink Aspects", fontsize=20, fontweight="bold")  # Main title
 
-        # Display the plot in Streamlit
-        st.pyplot(fig)
+            # Remove axes
+            plt.axis('off')
 
-        st.write("The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)")
+            # Display the plot in Streamlit
+            st.pyplot(fig)
+
+            st.write("The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)")
+
+        else:
+            st.write('There are neither Positive nor Negative reviews.')
 
     st.download_button("Download Aspect-Sentiment Output CSV file",
                     aspectSentimentOutput_df.to_csv(index = False),

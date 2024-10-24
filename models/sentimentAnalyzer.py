@@ -145,28 +145,37 @@ def sentimentAnalyzer(self, aspectInput_df):
     
     # Transfrom df
 
-    # Create a pivot table to count positive and negative sentiments for each aspect
-    df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
-
     try:
+
+        # Create a pivot table to count positive and negative sentiments for each aspect
+        df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
         # Add a 'Total' column to get the sum of positive and negative sentiments
         df['Total'] = df['Positive'] + df['Negative']
         # Represent overall sentiment for the category based on no. of 'Positive'/'Negative'
         df["Sentiment"] = np.round((df["Positive"] - df["Negative"]) / (df["Positive"] + df["Negative"]), 2)
-    except:
-        # Handle cases where 'Negative' or 'Positive' columns are missing
+        # Set 'Category' column as index
+        df["Category"] = df.index
+
+    except: # Handle cases where 'Negative' and/ or 'Positive' columns are missing
+
         if 'Positive' in df.columns and 'Negative' not in df.columns:
+            # Create a pivot table to count positive and negative sentiments for each aspect
+            df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
             df['Total'] = df['Positive']
             df["Sentiment"] = 1
+            # Set 'Category' column as index
+            df["Category"] = df.index
+
         elif 'Negative' in df.columns and 'Positive' not in df.columns:
+            # Create a pivot table to count positive and negative sentiments for each aspect
+            df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
             df['Total'] = df['Negative']
             df["Sentiment"] = -1
-        else:  # No 'Positive' and 'Negative' columns
-            df['Total'] = 0
-            df["Sentiment"] = 0
+            # Set 'Category' column as index
+            df["Category"] = df.index
 
-     # Set 'Category' column as index
-    df["Category"] = df.index
+        else:  # No 'Positive' and 'Negative' columns
+            df = pd.DataFrame()
     
     overallResultsOutput_df = df.copy()
     
