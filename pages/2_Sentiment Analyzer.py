@@ -25,7 +25,7 @@ st.header('Aspect Based Sentiment Analysis (ABSA) System')
 
 st.write(f"*Simply download the Template CSV file, change the Time Period and Reviews of interest, and upload the modified CSV file.*")
 st.write(f"*ABSA models will then run in the background (the models run time can be anywhere between few seconds to hours, depending on the size of the modified CSV file).*")
-st.write(f"*The results will be displayed after the models have finished running. The output CSV results can also be downloaded.*")
+st.write(f"*The results will be displayed after the models have finished running. The output CSV files can also be downloaded.*")
 
 data = {
     "Time period": ["April - May 2024"] + [""] * 8,
@@ -62,7 +62,7 @@ try:
     st.subheader('Results')
     st.write(f"Time period: *{timePeriod_str}*")
     if overallResultsOutput_df.empty:
-            st.write('There are neither Positive nor Negative reviews.')
+            st.write('There are neither Positive nor Negative reviews. CSV files will not be available for download.')
 
     col1, col2 = st.columns([1,1])
 
