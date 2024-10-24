@@ -146,37 +146,36 @@ def sentimentAnalyzer(self, aspectInput_df):
     # Transfrom df
 
     try:
-
         # Create a pivot table to count positive and negative sentiments for each aspect
         df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
-        # Add a 'Total' column to get the sum of positive and negative sentiments
-        df['Total'] = df['Positive'] + df['Negative']
-        # Represent overall sentiment for the category based on no. of 'Positive'/'Negative'
-        df["Sentiment"] = np.round((df["Positive"] - df["Negative"]) / (df["Positive"] + df["Negative"]), 2)
+
+        # Check if both 'Positive' and 'Negative' exist in the pivot table
+        if 'Positive' in df.columns and 'Negative' in df.columns:
+            # Add a 'Total' column to get the sum of positive and negative sentiments
+            df['Total'] = df['Positive'] + df['Negative']
+            # Represent overall sentiment for the category based on the number of 'Positive'/'Negative'
+            df["Sentiment"] = np.round((df["Positive"] - df["Negative"]) / (df["Positive"] + df["Negative"]), 2)
+
+        elif 'Positive' in df.columns and 'Negative' not in df.columns:
+            # Handle the case when only positive sentiments are available
+            df['Total'] = df['Positive']
+            df["Sentiment"] = 1  # Positive sentiment
+
+        elif 'Negative' in df.columns and 'Positive' not in df.columns:
+            # Handle the case when only negative sentiments are available
+            df['Total'] = df['Negative']
+            df["Sentiment"] = -1  # Negative sentiment
+
+        # else:
+        #     # If neither 'Positive' nor 'Negative' exists (no sentiment extracted), handle this case
+        #     df['Total'] = 0
+        #     df["Sentiment"] = 0
+
         # Set 'Category' column as index
         df["Category"] = df.index
+        overallResultsOutput_df = df.copy()
 
-    except KeyError:
+    except KeyError as e:
+        overallResultsOutput_df = pd.DataFrame()  # Return an empty DataFrame if an error occurs
 
-        if 'Aspect' in df.columns and 'Sentiment' in df.columns: # there is either Positive or Negative comments
-
-            if 'Positive' in df.columns and 'Negative' not in df.columns:
-                # Create a pivot table to count positive and negative sentiments for each aspect
-                df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
-                df['Total'] = df['Positive']
-                df["Sentiment"] = 1
-                df["Category"] = df.index
-                overallResultsOutput_df = df.copy()
-
-            elif 'Negative' in df.columns and 'Positive' not in df.columns:
-                # Create a pivot table to count positive and negative sentiments for each aspect
-                df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
-                df['Total'] = df['Negative']
-                df["Sentiment"] = -1
-                df["Category"] = df.index
-                overallResultsOutput_df = df.copy()
-
-        else: # there are no sentiments extracted
-            overallResultsOutput_df = pd.DataFrame()  
-    
     return aspectSentimentOutput_df, overallResultsOutput_df # aspect-sentiment result outputs; aggregated final outputs
