@@ -62,7 +62,7 @@ try:
     st.subheader('Results')
     st.write(f"Time period: *{timePeriod_str}*")
     if overallResultsOutput_df.empty:
-            st.write('There are neither Positive nor Negative reviews. CSV files will not be available for download.')
+            st.write('There are neither Positive nor Negative reviews. Heat Map will not be generated. CSV files will not be available for download.')
 
     col1, col2 = st.columns([1,1])
 
