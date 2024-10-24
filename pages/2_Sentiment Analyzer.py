@@ -185,7 +185,7 @@ try:
                                 mime = 'text/csv')
                 
     else:
-        st.write("Uploaded CSV file does not contain the required columns. Please label the columns as 'Time period' and 'Reviews'.")
+        st.write("Uploaded CSV file is not formatted correctly. Please include only 2 columns and label them as 'Time period' and 'Reviews'.")
 
 except:
     pass
