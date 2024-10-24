@@ -156,30 +156,32 @@ def sentimentAnalyzer(self, aspectInput_df):
         # Set 'Category' column as index
         df["Category"] = df.index
 
-    except: # Handle cases where 'Negative' and/ or 'Positive' columns are missing
+    except: # Handle cases where 'Negative' or 'Positive' columns are missing
 
-        if 'Positive' in df.columns and 'Negative' not in df.columns:
-            # Create a pivot table to count positive and negative sentiments for each aspect
-            df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
-            df['Total'] = df['Positive']
-            df["Sentiment"] = 1
-            # Set 'Category' column as index
-            df["Category"] = df.index
+        try:
 
-        elif 'Negative' in df.columns and 'Positive' not in df.columns:
-            # Create a pivot table to count positive and negative sentiments for each aspect
-            df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
-            df['Total'] = df['Negative']
-            df["Sentiment"] = -1
-            # Set 'Category' column as index
-            df["Category"] = df.index
+            if 'Positive' in df.columns and 'Negative' not in df.columns:
+                # Create a pivot table to count positive and negative sentiments for each aspect
+                df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
+                df['Total'] = df['Positive']
+                df["Sentiment"] = 1
+                # Set 'Category' column as index
+                df["Category"] = df.index
 
-        else:# No 'Positive' and 'Negative' columns
-            df = pd.DataFrame()
+            elif 'Negative' in df.columns and 'Positive' not in df.columns:
+                # Create a pivot table to count positive and negative sentiments for each aspect
+                df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
+                df['Total'] = df['Negative']
+                df["Sentiment"] = -1
+                # Set 'Category' column as index
+                df["Category"] = df.index
+
+        except:
+            pass
     
     if 'Sentiment' in df.columns:
         overallResultsOutput_df = df.copy()
-    else:
+    else: # No 'Positive' and 'Negative' columns
       overallResultsOutput_df = pd.DataFrame()  
     
     return aspectSentimentOutput_df, overallResultsOutput_df # aspect-sentiment result outputs; aggregated final outputs
