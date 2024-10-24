@@ -51,7 +51,17 @@ st.subheader('Upload your modified CSV file here:')
 uploaded_file = st.file_uploader("Upload CSV File (there should only be 1 cell input for column 'Time period')")
 
 try:
-    rawInput_df = pd.read_csv(uploaded_file)
+
+    try:
+        rawInput_df = pd.read_csv(uploaded_file)
+    except pd.errors.ParserError:
+        st.write('Uploaded file is not in CSV format. Please try again.')
+
+    try:
+        rawInput_df['Time period']
+        rawInput_df['Reviews']
+    except KeyError:
+        st.write("Uploaded CSV file is not containing the required columns. Please label the 2 columns as 'Time period' and 'Reviews'.")
 
     modelResults = controllerService()
     aspect_df = modelResults.runAspectClassification(rawInput_df)
@@ -155,17 +165,17 @@ try:
 
             st.write("*The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)*")
 
-    # if not overallResultsOutput_df.empty:
+    if not overallResultsOutput_df.empty:
 
-    st.download_button("Download Aspect-Sentiment Output CSV file",
-                    aspectSentimentOutput_df.to_csv(index = False),
-                    file_name = 'aspectSentimentOutput_file.csv',
-                    mime = 'text/csv')
-    
-    st.download_button("Download Overall Results Output CSV file",
-                    overallResultsOutput_df.to_csv(index = False),
-                    file_name = 'overallResultsOutput_file.csv',
-                    mime = 'text/csv')
+        st.download_button("Download Aspect-Sentiment Output CSV file",
+                        aspectSentimentOutput_df.to_csv(index = False),
+                        file_name = 'aspectSentimentOutput_file.csv',
+                        mime = 'text/csv')
+        
+        st.download_button("Download Overall Results Output CSV file",
+                        overallResultsOutput_df.to_csv(index = False),
+                        file_name = 'overallResultsOutput_file.csv',
+                        mime = 'text/csv')
 
 except ValueError:
     pass
