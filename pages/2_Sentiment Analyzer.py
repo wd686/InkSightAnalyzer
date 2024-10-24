@@ -103,10 +103,22 @@ try:
 
         # Plot the word cloud using Streamlit
         st.set_option('deprecation.showPyplotGlobalUse', False)
-        plt.figure(figsize=(width, height))
-        plt.suptitle("Word Cloud of Reviews", fontsize=titleSize, fontweight='bold') # Main title
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis("off")
+        fig, ax = plt.subplots(figsize=(width, height))  # Adjusting figure size to control plot size
+        ax.imshow(wordcloud, interpolation='bilinear')
+        ax.axis("off")
+        
+        # Add the title without affecting the word cloud size
+        plt.suptitle("Word Cloud of Reviews", fontsize=titleSize, fontweight='bold')
+        
+        # Use `tight_layout` to ensure the title doesn't overlap with the plot
+        plt.tight_layout(rect=[0, 0, 1, 0.95])  # Adjust the rect to fit the title properly
+
+        # # Plot the word cloud using Streamlit
+        # st.set_option('deprecation.showPyplotGlobalUse', False)
+        # plt.figure(figsize=(width, height))
+        # plt.suptitle("Word Cloud of Reviews", fontsize=titleSize, fontweight='bold') # Main title
+        # plt.imshow(wordcloud, interpolation='bilinear')
+        # plt.axis("off")
 
         # Display the word cloud in Streamlit
         st.pyplot(plt)
