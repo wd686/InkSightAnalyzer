@@ -156,7 +156,7 @@ def sentimentAnalyzer(self, aspectInput_df):
         # Set 'Category' column as index
         df["Category"] = df.index
 
-    except: # Handle cases where 'Negative' and/ or 'Positive' columns are missing
+    except KeyError: # Handle cases where 'Negative' and/ or 'Positive' columns are missing
 
         if 'Positive' in df.columns and 'Negative' not in df.columns:
             # Create a pivot table to count positive and negative sentiments for each aspect
