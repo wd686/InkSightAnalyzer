@@ -146,6 +146,8 @@ try:
         # Display the plot in Streamlit
         st.pyplot(fig)
 
+        st.write("The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)")
+
     st.download_button("Download Aspect-Sentiment Output CSV file",
                     aspectSentimentOutput_df.to_csv(index = False),
                     file_name = 'aspectSentimentOutput_file.csv',
