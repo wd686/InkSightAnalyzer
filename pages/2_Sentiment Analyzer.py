@@ -108,15 +108,14 @@ try:
         # Display the word cloud in Streamlit
         st.pyplot(plt)
 
-    col1, col2 = st.columns([1,1])
+    if not overallResultsOutput_df.empty:
+        col1, col2 = st.columns([1,1])
 
-    with col1:
+        with col1:
 
-        wordCloud(rawInput_df)
-        
-    with col2:
+            wordCloud(rawInput_df)
 
-        if not overallResultsOutput_df.empty:
+        with col2:
 
             # Tree Map
 
@@ -152,8 +151,9 @@ try:
 
             st.write("The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)")
 
-        else:
-            st.write('There are neither Positive nor Negative reviews.')
+    else:
+        wordCloud(rawInput_df)
+        st.write('There are neither Positive nor Negative reviews.')
 
     st.download_button("Download Aspect-Sentiment Output CSV file",
                     aspectSentimentOutput_df.to_csv(index = False),
