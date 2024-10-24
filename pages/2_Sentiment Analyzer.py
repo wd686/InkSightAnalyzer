@@ -187,5 +187,5 @@ try:
     else:
         st.write("Uploaded CSV file is not formatted correctly. Please include only 2 columns and label them as 'Time period' and 'Reviews'.")
 
-except (AttributeError, pd.errors.ParserError) as e:
-    pass
+except Exception as e:
+    st.write(e)
