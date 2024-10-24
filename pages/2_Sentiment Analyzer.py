@@ -62,7 +62,7 @@ try:
     st.subheader('Results')
     st.write(f"Time period: *{timePeriod_str}*")
 
-    def wordCloud(rawInput_df, width = 12, height = 8, titleSize = 20):
+    def wordCloud(rawInput_df, width = 12, height = 8):
 
         def preprocess_text(tokens):
 
@@ -97,6 +97,9 @@ try:
 
         # Generate the word cloud
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_reviews)
+
+         # Calculate a title font size proportionate to the figure size
+        titleSize = min(width * 3, 20)
 
         # Plot the word cloud using Streamlit
         st.set_option('deprecation.showPyplotGlobalUse', False)
