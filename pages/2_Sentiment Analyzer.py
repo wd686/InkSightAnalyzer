@@ -62,7 +62,7 @@ try:
     st.subheader('Results')
     st.write(f"Time period: *{timePeriod_str}*")
 
-    def wordCloud(rawInput_df, width = 800, height = 400):
+    def wordCloud(rawInput_df, width = 12, height = 8, titleSize = 20):
 
         def preprocess_text(tokens):
 
@@ -96,12 +96,12 @@ try:
         all_reviews = ' '.join(rawInput_df['Processed_Reviews'])
 
         # Generate the word cloud
-        wordcloud = WordCloud(width=width, height=height, background_color='white').generate(all_reviews)
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_reviews)
 
         # Plot the word cloud using Streamlit
         st.set_option('deprecation.showPyplotGlobalUse', False)
-        plt.figure(figsize=(3, 2)) # TODO 12, 8
-        plt.suptitle("Word Cloud of Reviews", fontsize=20, fontweight='bold') # Main title
+        plt.figure(figsize=(width, height))
+        plt.suptitle("Word Cloud of Reviews", fontsize=titleSize, fontweight='bold') # Main title
         plt.imshow(wordcloud, interpolation='bilinear')
         plt.axis("off")
 
@@ -153,7 +153,7 @@ try:
 
     else:
         st.write('There are neither Positive nor Negative reviews.')
-        wordCloud(rawInput_df, 800, 400)
+        wordCloud(rawInput_df, 3, 2, 5)
 
     st.download_button("Download Aspect-Sentiment Output CSV file",
                     aspectSentimentOutput_df.to_csv(index = False),
