@@ -67,8 +67,6 @@ try:
         elif rawInput_df['Reviews'].isnull().all():
             st.write("The 'Reviews' column is empty. Please provide data.")
         else:
-            # Process the DataFrame as needed
-            st.write("Data loaded successfully. Running the ABSA models ...")
 
             modelResults = controllerService()
             aspect_df = modelResults.runAspectClassification(rawInput_df)
