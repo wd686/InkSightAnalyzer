@@ -52,6 +52,9 @@ uploaded_file = st.file_uploader("Upload CSV File (there should only be 1 cell i
 
 try:
 
+    if not uploaded_file.name.endswith('.csv'):
+        st.write('Uploaded file is not in CSV format. Please try again.')
+
     # Attempt to read the uploaded file as a CSV
     rawInput_df = pd.read_csv(uploaded_file)
     
@@ -180,8 +183,5 @@ try:
     else:
         st.write("Uploaded CSV file does not contain the required columns. Please label the columns as 'Time period' and 'Reviews'.")
 
-except (ValueError, pd.errors.ParserError) as e:
-    if isinstance(e, pd.errors.ParserError):
-        st.write('Uploaded file is not in CSV format. Please try again.')
-    else:
-        pass
+except ValueError:
+    pass
