@@ -153,7 +153,7 @@ try:
             # Display the plot in Streamlit
             st.pyplot(fig)
 
-            st.write("The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)")
+            st.write("*The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)*")
 
     # if not overallResultsOutput_df.empty:
 
