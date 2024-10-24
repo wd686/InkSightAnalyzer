@@ -153,7 +153,7 @@ try:
 
     else:
         st.write('There are neither Positive nor Negative reviews.')
-        wordCloud(rawInput_df, 3, 2, 5)
+        wordCloud(rawInput_df, 2.1, 0.7, 5)
 
     st.download_button("Download Aspect-Sentiment Output CSV file",
                     aspectSentimentOutput_df.to_csv(index = False),
