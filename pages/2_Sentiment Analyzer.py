@@ -58,8 +58,8 @@ try:
         st.write('Uploaded file is not in CSV format. Please try again.')
 
     try:
-        rawInput_df['Time period']
-        rawInput_df['Reviews']
+        rawInput_df['Time period'].shape
+        rawInput_df['Reviews'].shape
     except KeyError:
         st.write("Uploaded CSV file is not containing the required columns. Please label the 2 columns as 'Time period' and 'Reviews'.")
 
