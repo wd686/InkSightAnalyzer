@@ -168,18 +168,17 @@ def sentimentAnalyzer(self, aspectInput_df):
                 # Set 'Category' column as index
                 df["Category"] = df.index
         except:
-            pass
 
-        try:
-            if 'Negative' in df.columns and 'Positive' not in df.columns:
-                # Create a pivot table to count positive and negative sentiments for each aspect
-                df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
-                df['Total'] = df['Negative']
-                df["Sentiment"] = -1
-                # Set 'Category' column as index
-                df["Category"] = df.index
-        except:
-            pass
+            try:
+                if 'Negative' in df.columns and 'Positive' not in df.columns:
+                    # Create a pivot table to count positive and negative sentiments for each aspect
+                    df = df.pivot_table(index='Aspect', columns='Sentiment', aggfunc='size', fill_value=0)
+                    df['Total'] = df['Negative']
+                    df["Sentiment"] = -1
+                    # Set 'Category' column as index
+                    df["Category"] = df.index
+            except:
+                pass
     
     if 'Sentiment' in df.columns:
         overallResultsOutput_df = df.copy()
