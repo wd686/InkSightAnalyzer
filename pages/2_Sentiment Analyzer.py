@@ -79,6 +79,40 @@ try:
             if overallResultsOutput_df.empty:
                     st.write('There are neither Positive nor Negative reviews. Heat Map will not be generated. CSV files will not be available for download.')
 
+            def treeMap(overallResultsOutput_df):
+
+                # Normalize sentiment values and apply colors
+                norm = matplotlib.colors.Normalize(vmin=min(overallResultsOutput_df.Sentiment), vmax=max(overallResultsOutput_df.Sentiment))
+                colors = [matplotlib.cm.Reds_r(norm(value)) for value in overallResultsOutput_df.Sentiment]
+                # # Create a colormap from red to green
+                # cmap = plt.get_cmap('RdYlGn')  # Use a diverging color map (Red to Yellow to Green)
+                # colors = [cmap(norm(value)) for value in overallResultsOutput_df.Sentiment]
+
+                # Create figure and size
+                fig, ax = plt.subplots()
+                fig.set_size_inches(12, 8)
+
+                # Create squarify plot
+                squarify.plot(
+                    label=overallResultsOutput_df.Category,
+                    sizes=overallResultsOutput_df.Total,
+                    value=overallResultsOutput_df.Sentiment,
+                    color=colors,
+                    alpha=.6,
+                    pad=True
+                )
+
+                # Add title
+                plt.suptitle("Sentiment Heat Map of Printer & Ink Aspects", fontsize=20, fontweight="bold")  # Main title
+
+                # Remove axes
+                plt.axis('off')
+
+                # Display the plot in Streamlit
+                st.pyplot(fig)
+
+                st.write("*The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)*")
+
             col1, col2 = st.columns([1,1])
 
             with col1:
@@ -131,44 +165,12 @@ try:
                 
                 else:
                     st.write('Reviews do not meet requirements for Word Cloud generation.')
+                    treeMap(overallResultsOutput_df)
                 
             with col2:
                 
-                if not overallResultsOutput_df.empty:
-
-                    # Tree Map
-
-                    # Normalize sentiment values and apply colors
-                    norm = matplotlib.colors.Normalize(vmin=min(overallResultsOutput_df.Sentiment), vmax=max(overallResultsOutput_df.Sentiment))
-                    colors = [matplotlib.cm.Reds_r(norm(value)) for value in overallResultsOutput_df.Sentiment]
-                    # # Create a colormap from red to green
-                    # cmap = plt.get_cmap('RdYlGn')  # Use a diverging color map (Red to Yellow to Green)
-                    # colors = [cmap(norm(value)) for value in overallResultsOutput_df.Sentiment]
-
-                    # Create figure and size
-                    fig, ax = plt.subplots()
-                    fig.set_size_inches(12, 8)
-
-                    # Create squarify plot
-                    squarify.plot(
-                        label=overallResultsOutput_df.Category,
-                        sizes=overallResultsOutput_df.Total,
-                        value=overallResultsOutput_df.Sentiment,
-                        color=colors,
-                        alpha=.6,
-                        pad=True
-                    )
-
-                    # Add title
-                    plt.suptitle("Sentiment Heat Map of Printer & Ink Aspects", fontsize=20, fontweight="bold")  # Main title
-
-                    # Remove axes
-                    plt.axis('off')
-
-                    # Display the plot in Streamlit
-                    st.pyplot(fig)
-
-                    st.write("*The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)*")
+                if not overallResultsOutput_df.empty and all_reviews != '':
+                    treeMap(overallResultsOutput_df)
 
             if not overallResultsOutput_df.empty:
 
