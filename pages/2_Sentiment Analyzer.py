@@ -111,7 +111,7 @@ try:
                 # Display the plot in Streamlit
                 st.pyplot(fig)
 
-                st.write("*The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worse, 0 = Neutral, 1 = Best)*")
+                st.write("*The Sentiment Score for each aspect is normalized between -1 to 1 (-1 = Worst, 0 = Neutral, 1 = Best)*")
 
             col1, col2 = st.columns([1,1])
 
