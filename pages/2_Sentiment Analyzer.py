@@ -188,5 +188,5 @@ try:
         st.write("Uploaded CSV file is not formatted correctly. Please include only 2 columns and label them as 'Time period' and 'Reviews'.")
 
 except Exception as e:
-    # pass
-    st.write(e)
+    pass
+    # st.write(e)
